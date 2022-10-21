@@ -1,0 +1,12 @@
+﻿  float_unary.cpp
+  funksForStack.cpp
+  main.cpp
+  stack.cpp
+C:\Users\user\source\repos\TP\TP2\TP2\stack.cpp(10,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\user\source\repos\TP\TP2\TP2\stack.cpp(24,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...
+C:\Users\user\source\repos\TP\TP2\TP2\float_unary.cpp(53): warning C4172: returning address of local variable or temporary: newFloat_unary
+C:\Users\user\source\repos\TP\TP2\TP2\float_unary.cpp(58): warning C4172: returning address of local variable or temporary: newFloat_unary
+C:\Users\user\source\repos\TP\TP2\TP2\float_unary.cpp(63): warning C4172: returning address of local variable or temporary: newFloat_unary
+C:\Users\user\source\repos\TP\TP2\TP2\float_unary.cpp(48): warning C4172: returning address of local variable or temporary: newFloat_unary
+  TP2.vcxproj -> C:\Users\user\source\repos\TP\TP2\x64\Debug\TP2.exe

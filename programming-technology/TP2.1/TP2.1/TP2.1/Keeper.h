@@ -22,5 +22,7 @@ public:
 	void hellower();
 	void add_poet(string fullname, int* years_of_live, string name_books);
 	int get_of_number_poet();
+
+	Poet get_poet(int id);
 };
 

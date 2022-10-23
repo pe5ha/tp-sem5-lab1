@@ -23,3 +23,9 @@ void Keeper::hellower()
 {
 	cout << "hello" << endl;
 }
+
+Poet Keeper::get_poet(int id)
+{
+	if (id >= size_p) { cout << "замени на эксепшен!" << endl; return p[0]; }//TODO: замени на эксепшен! 
+	return p[id];
+}

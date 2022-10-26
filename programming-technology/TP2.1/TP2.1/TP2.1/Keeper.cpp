@@ -63,3 +63,14 @@ void Keeper::Read()
 	}
 	in.close(); // закрываем файл
 }
+
+void Keeper::print_poet(int id)
+{
+	cout << p[id].get_fullname() << endl;
+	cout << p[id].get_years_of_birth() << endl;
+	cout << p[id].get_years_of_death() << endl;
+	cout << p[id].get_name_books() << endl;
+}
+
+
+

@@ -38,5 +38,11 @@ int main()
     k.get_poet(1).get_fullname();
     k.get_of_number_poet();
     k.Save();
-    k.Read(); 
+    k.Read();
+    cout << k.get_of_number_poet();
+    k.add(new_p1);
+    cout << k.get_of_number_poet();
+    for (int i = 0; i < k.get_of_number_poet(); i++) {
+        k.print_poet(i);
+    }
 }

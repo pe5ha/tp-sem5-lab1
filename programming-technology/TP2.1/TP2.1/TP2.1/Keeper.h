@@ -8,7 +8,6 @@
 ▪ полное восстановление себя из файла.
 */
 
-
 class Keeper
 {
 private:
@@ -20,10 +19,16 @@ public:
 	Keeper();
 
 	void add_poet(Poet new_p);
+
+	template <typename T>
+	void add(T newT) { if (std::is_same<T, Poet>::value) p[size_p++] = newT; }
+
 	int get_of_number_poet();
 
 	Poet get_poet(int id);
 
 	void Save();
 	void Read();
+	//TODO: вывод инфы,
+	void print_poet(int id);
 };

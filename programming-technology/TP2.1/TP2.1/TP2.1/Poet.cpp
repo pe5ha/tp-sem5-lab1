@@ -3,21 +3,24 @@
 Poet::Poet()
 {
 	this->fullname = "NULL";
-	this->years_of_live = NULL;
+	this->year_of_birth = NULL;
+	this->year_of_death = NULL;
 	this->name_books = "NULL";
 }
 
-Poet::Poet(string fullname, int* years_of_live, string name_books)
+Poet::Poet(string fullname, int year_of_birth, int year_of_death, string name_books)
 {
 	this->fullname = fullname;
-	this->years_of_live = years_of_live;
+	this->year_of_birth = year_of_birth;
+	this->year_of_death = year_of_death;
 	this->name_books = name_books;
 }
 
 Poet::Poet(const Poet& ref_Poet)
 {
 	fullname = ref_Poet.fullname;
-	years_of_live = ref_Poet.years_of_live;
+	year_of_birth = ref_Poet.year_of_birth;
+	year_of_death = ref_Poet.year_of_death;
 	name_books = ref_Poet.name_books;
 }
 
@@ -26,9 +29,14 @@ string Poet::get_fullname()
 	return Writter::get_fullname();
 }
 
-int* Poet::get_years_of_live()
+int Poet::get_years_of_birth()
 {
-	return years_of_live;
+	return year_of_birth;
+}
+
+int Poet::get_years_of_death()
+{
+	return year_of_death;
 }
 
 string Poet::get_name_books()
@@ -41,9 +49,10 @@ void Poet::set_fullname(string fullname)
 	Writter::set_fullname(fullname);
 }
 
-void Poet::set_years_of_live(int* years_of_live)
+void Poet::set_years_of_live(int year_of_birth, int year_of_death)
 {
-	this->years_of_live = years_of_live;
+	this->year_of_birth = year_of_birth;
+	this->year_of_death = year_of_death;
 }
 
 void Poet::set_name_books(string name_books)

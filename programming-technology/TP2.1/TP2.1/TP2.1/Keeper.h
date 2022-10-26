@@ -20,6 +20,7 @@ public:
 	Keeper();
 
 	void add_poet(string fullname, int* years_of_live, string name_books);
+	void add_poet(Poet new_p);
 	int get_of_number_poet();
 
 	Poet get_poet(int id);

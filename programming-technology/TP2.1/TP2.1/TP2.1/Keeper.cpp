@@ -12,12 +12,18 @@ void Keeper::add_poet(string fullname, int* years_of_live, string name_books)
 	p[size_p].set_name_books(name_books);
 	this->size_p++;
 }
+void Keeper::add_poet(Poet new_p)
+{
+	p[size_p] = new_p;
+}
 
 Keeper::Keeper()
 {
 	this->size_p = 0;
 	p = new Poet[10];
 }
+
+
 
 
 Poet Keeper::get_poet(int id)
@@ -49,26 +55,17 @@ void Keeper::Read()
 	ifstream in("data.txt");
 	if (in.is_open())
 	{
-
 		for (int i = 0; 0 < size_p; i++) {
-			//занулим
-			p[i].set_fullname("NULL");
-			p[i].set_years_of_live(nullptr);
-			p[i].set_name_books("NULL");
-
 			getline(in, fn);
 
 			in >> yol;
 			//getline(in, yol);
 			getline(in, new_name_of_book);
 
-			
+			Poet new_p(fn, &yol, new_name_of_book);
+			p[i] = new_p;
 
-			p[i].set_fullname(fn);
-			p[i].set_years_of_live(&yol);
-			p[i].set_name_books(new_name_of_book);
-
-			cout << p[i].get_fullname() << p[i].get_years_of_live() << p->get_name_books() << endl;
+			cout << p[i].get_fullname() << p[i].get_years_of_live() << p[i].get_name_books() << endl;
 		}
 		
 	}

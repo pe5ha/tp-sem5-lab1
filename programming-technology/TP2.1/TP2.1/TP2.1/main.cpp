@@ -29,9 +29,9 @@ int main()
 
     k.add_poet("Semyon", nullptr, "little prince");
     k.add_poet("Kirill", nullptr, "little prince");
-    cout << k.get_poet(0).get_fullname() << endl;
-    cout << k.get_poet(1).get_fullname() << endl;
-    cout << k.get_of_number_poet() << endl;
+    k.get_poet(0).get_fullname();
+    k.get_poet(1).get_fullname();
+    k.get_of_number_poet();
     k.Save();
     k.Read();
 }

@@ -28,17 +28,49 @@ Poet Keeper::get_poet(int id)
 
 void Keeper::Save()
 {
-    //ifstream in("data"); // открываем файл для считывания
-	ofstream out("data", ios::binary); // открываем файл для записи
-	int x = 100;
-	double y = 5.6;
-	out.write((char*)&x, sizeof(x));        //Записываем в файл значение "x"
-	out.write((char*)&y, sizeof(y));        //Записываем в файл значение "y"
-	out.write((char*)&y, sizeof(y));        //Записываем в файл значение "y"
+	ofstream out;          // поток для записи
+	out.open("data.txt"); // окрываем файл для записи
+	if (out.is_open())
+	{
+		for (int i = 0; i < size_p; i++) {
+			out << p[i].get_fullname() << endl;
+			out << p[i].get_years_of_live() << endl;
+			out << p[i].get_name_books() << endl;
+		}
+	}
 	out.close();
 }
 
 void Keeper::Read()
 {
-	ifstream in("data");
+	string fn;//новое ФИО
+	int yol;//года
+	string new_name_of_book;
+	ifstream in("data.txt");
+	if (in.is_open())
+	{
+
+		for (int i = 0; 0 < size_p; i++) {
+			//занулим
+			p[i].set_fullname("NULL");
+			p[i].set_years_of_live(nullptr);
+			p[i].set_name_books("NULL");
+
+			getline(in, fn);
+
+			in >> yol;
+			//getline(in, yol);
+			getline(in, new_name_of_book);
+
+			
+
+			p[i].set_fullname(fn);
+			p[i].set_years_of_live(&yol);
+			p[i].set_name_books(new_name_of_book);
+
+			cout << p[i].get_fullname() << p[i].get_years_of_live() << p->get_name_books() << endl;
+		}
+		
+	}
+	in.close();     // закрываем файл
 }

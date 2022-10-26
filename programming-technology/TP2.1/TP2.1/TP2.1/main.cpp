@@ -23,6 +23,7 @@
 
 int main()
 {
+    setlocale(LC_ALL, "rus"); // корректное отображение Кириллицы
     Keeper k;
     cout << "Keeper is here!" << endl;
 
@@ -31,5 +32,6 @@ int main()
     cout << k.get_poet(0).get_fullname() << endl;
     cout << k.get_poet(1).get_fullname() << endl;
     cout << k.get_of_number_poet() << endl;
-    
+    k.Save();
+    k.Read();
 }

@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <fstream>
 #include "Poet.h"
 /*Разработать класс Keeper, который реализует контейнер для хранения и обработки
 объектов. Класс Keeper должен обеспечивать следующие функции:
@@ -18,11 +19,11 @@ public:
 	//конструкторы
 	Keeper();
 
-
-	void hellower();
 	void add_poet(string fullname, int* years_of_live, string name_books);
 	int get_of_number_poet();
 
 	Poet get_poet(int id);
-};
 
+	void Save();
+	void Read();
+};

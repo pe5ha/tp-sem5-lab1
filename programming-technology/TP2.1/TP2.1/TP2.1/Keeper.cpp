@@ -1,6 +1,6 @@
 #include "Keeper.h"
 
-int Keeper::get_of_number_poet()
+int Keeper::get_size()
 {
 	return size_p;
 }

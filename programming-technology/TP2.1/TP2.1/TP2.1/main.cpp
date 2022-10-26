@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include "Poet.h"
 #include "Keeper.h"
+#include <Windows.h>
 
 /*Класс Печатное издание хранит книги поэтов, романистов и фантастов. Для
 поэтов определено: ФИО, годы жизни, несколько основных произведений. Для
@@ -27,8 +28,6 @@ int main()
     Keeper k;
     cout << "Keeper is here!" << endl;
 
-    //tete
-
     Poet new_p1("Semyon", 2002, 2100, "little prince");
     Poet new_p2("Kirill", 2000, 2024, "little prince");
 
@@ -36,13 +35,13 @@ int main()
     k.add_poet(new_p2);
     k.get_poet(0).get_fullname();
     k.get_poet(1).get_fullname();
-    k.get_of_number_poet();
+    k.get_size();
     k.Save();
     k.Read();
-    cout << k.get_of_number_poet();
+    cout << k.get_size();
     k.add(new_p1);
-    cout << k.get_of_number_poet();
-    for (int i = 0; i < k.get_of_number_poet(); i++) {
+    cout << k.get_size();
+    for (int i = 0; i < k.get_size(); i++) {
         k.print_poet(i);
     }
 }

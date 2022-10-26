@@ -59,3 +59,23 @@ void Poet::set_name_books(string name_books)
 {
 	Writter::set_name_books(name_books);
 }
+
+void Poet::change_fullname(string fullname)
+{
+	this->fullname = fullname;
+}
+
+void Poet::change_year_of_birth(int year_of_birth)
+{
+	this->year_of_birth = year_of_birth;
+}
+
+void Poet::change_year_of_death(int year_of_death)
+{
+	this->year_of_death = year_of_death;
+}
+
+void Poet::change_name_of_book(string name_books)
+{
+	this->name_books = name_books;
+}

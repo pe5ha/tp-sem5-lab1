@@ -27,11 +27,14 @@ int main()
     Keeper k;
     cout << "Keeper is here!" << endl;
 
+    //tete
+
     k.add_poet("Semyon", nullptr, "little prince");
     k.add_poet("Kirill", nullptr, "little prince");
     k.get_poet(0).get_fullname();
     k.get_poet(1).get_fullname();
     k.get_of_number_poet();
     k.Save();
-    k.Read();
+    k.Read(); // 
+    k.get_of_number_poet();
 }

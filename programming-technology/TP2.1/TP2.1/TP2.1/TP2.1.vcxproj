@@ -129,11 +129,13 @@
   <ItemGroup>
     <ClCompile Include="Keeper.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="menu.cpp" />
     <ClCompile Include="Poet.cpp" />
     <ClCompile Include="Writter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Keeper.h" />
+    <ClInclude Include="menu.h" />
     <ClInclude Include="Poet.h" />
     <ClInclude Include="Writter.h" />
   </ItemGroup>

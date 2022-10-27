@@ -49,9 +49,13 @@ void Poet::set_fullname(string fullname)
 	Writter::set_fullname(fullname);
 }
 
-void Poet::set_years_of_live(int year_of_birth, int year_of_death)
+void Poet::set_years_of_birth(int year_of_birth)
 {
 	this->year_of_birth = year_of_birth;
+}
+
+void Poet::set_years_of_death(int year_of_death)
+{
 	this->year_of_death = year_of_death;
 }
 

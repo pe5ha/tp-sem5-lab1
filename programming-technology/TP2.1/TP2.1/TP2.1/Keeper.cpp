@@ -1,5 +1,12 @@
 #include "Keeper.h"
 
+
+Keeper::Keeper()
+{
+	this->size_p = 0;
+	p = new Poet[1];
+}
+
 int Keeper::get_size()
 {
 	return size_p;
@@ -7,14 +14,28 @@ int Keeper::get_size()
 
 void Keeper::add_poet(Poet new_p)
 {
-	p[size_p] = new_p;
+	Poet* new_poets = new Poet[size_p + 1];
+	for (int i = 0; i < size_p; i++) {
+		new_poets[i] = p[i];
+	}
+	new_poets[size_p] = new_p;
 	size_p++;
+	p = new_poets;
 }
 
-Keeper::Keeper()
+void Keeper::delete_poet(int id)
 {
-	this->size_p = 0;
-	p = new Poet[10];
+	if (size_p <= 0) exception;
+	Poet* new_poets = new Poet[size_p - 1];
+	int k = 0;
+	for (int i = 0; i < size_p; i++) {
+		if (i == id) continue;
+		new_poets[k] = p[i];
+		k++;
+	}
+	//delete[] new_poets;
+	p = new_poets;
+	size_p--;
 }
 
 Poet Keeper::get_poet(int id)
@@ -22,6 +43,8 @@ Poet Keeper::get_poet(int id)
 	if (id >= size_p) { cout << "замени на эксепшен!" << endl; return p[0]; }//TODO: замени на эксепшен! 
 	return p[id];
 }
+
+
 
 void Keeper::Save()
 {

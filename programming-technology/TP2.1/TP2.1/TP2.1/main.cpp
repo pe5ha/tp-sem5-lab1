@@ -31,16 +31,15 @@ int main()
     Poet new_p1("Semyon", 2002, 2100, "little prince");
     Poet new_p2("Kirill", 2000, 2024, "little prince");
 
+    cout << k.get_size() << endl;
+
     k.add_poet(new_p1);
+    cout << k.get_size() << endl;
     k.add_poet(new_p2);
-    k.get_poet(0).get_fullname();
-    k.get_poet(1).get_fullname();
-    k.get_size();
-    k.Save();
-    k.Read();
+    k.add_poet(new_p2);
     cout << k.get_size();
-    k.add(new_p1);
-    cout << k.get_size();
+    //k.Save();
+    //k.Read();
     for (int i = 0; i < k.get_size(); i++) {
         k.print_poet(i);
     }

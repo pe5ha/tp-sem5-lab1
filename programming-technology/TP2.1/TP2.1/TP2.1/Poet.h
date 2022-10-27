@@ -19,7 +19,8 @@ public:
 
 	//сеттеры
 	void set_fullname(string fullname)override;
-	void set_years_of_live(int years_of_birth, int year_of_death);
+	void set_years_of_birth(int year_of_birth);
+	void set_years_of_death(int year_of_death);
 	void set_name_books(string name_books)override;
 
 	//изменение данных

@@ -1,5 +1,6 @@
 #pragma once
 #include "menu.h"
+#include "Keeper.h"
 namespace Menu {
 	void set_color(WORD color) { SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color); }
 	enum colors {
@@ -9,6 +10,8 @@ namespace Menu {
 	void menu_output(short menu) {
 		set_color(WHITE);
 		system("cls");
+
+
 
 		cout << endl << "====================================\n\n";
 		if (menu == 1)
@@ -58,6 +61,14 @@ namespace Menu {
 	}
 	
 	void menu() {
+		//test zone
+		Keeper k;
+		string new_name_books[2] = {"1Kniga", "2Kniga"};
+		Poet new_p("Semyon", 2002, 2160, new_name_books, 2);
+		k.add_poet(new_p);
+		k.print_poet(0);
+		k.print_poet(1);
+		//
 		menu_output(1);
 		char key_tmp; //временный символ
 		char key; //опция

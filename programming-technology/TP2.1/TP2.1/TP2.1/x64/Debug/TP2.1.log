@@ -1,5 +1,3 @@
-﻿  main.cpp
-  menu.cpp
-C:\Users\user\Desktop\tp\programming-technology\TP2.1\TP2.1\TP2.1\menu.cpp(90,8): warning C4101: 'del_id': unreferenced local variable
-  Generating Code...
+﻿  Keeper.cpp
+C:\Users\user\Desktop\tp\programming-technology\TP2.1\TP2.1\TP2.1\Keeper.cpp(28,28): warning C4091: '': ignored on left of 'std::exception' when no variable is declared
   TP2.1.vcxproj -> C:\Users\user\Desktop\tp\programming-technology\TP2.1\TP2.1\x64\Debug\TP2.1.exe

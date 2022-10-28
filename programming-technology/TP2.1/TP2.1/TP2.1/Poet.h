@@ -4,7 +4,7 @@ class Poet : public Writter
 {
 public:
 	Poet();
-	Poet(string fullname, int year_of_birth, int year , string name_books);// конструктор с парам-ми
+	Poet(string fullname, int year_of_birth, int year_of_death , string *name_books, int nob);// конструктор с парам-ми
 	Poet(const Poet &ref_Poet); // конструктор копирования
 
 	//годы жизни
@@ -15,19 +15,18 @@ public:
 	string get_fullname() override;
 	int get_years_of_birth();
 	int get_years_of_death();
-	string get_name_books() override;
+	string* get_name_books() override;
+	int get_number_of_books()override;
 
 	//сеттеры
 	void set_fullname(string fullname)override;
 	void set_years_of_birth(int year_of_birth);
 	void set_years_of_death(int year_of_death);
-	void set_name_books(string name_books)override;
+	void set_name_books(string* name_books)override;
+	void set_number_of_books(int new_nob)override;
 
 	//изменение данных
-	void change_fullname(string);
-	void change_year_of_birth(int);
-	void change_year_of_death(int);
-	void change_name_of_book(string);
+	void add_book(string)override;
 	//TODO: void add_book(string);
 };
 

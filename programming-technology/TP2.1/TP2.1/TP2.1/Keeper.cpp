@@ -78,10 +78,10 @@ void Keeper::Read()
 			getline(in, new_name_of_book);//TODO: сделать красиво - сейчас применяется для переноса на другую строку
 			getline(in, new_name_of_book);
 
-			Poet new_p(fn, yob, yod, new_name_of_book);
+			Poet new_p(fn, yob, yod, &new_name_of_book, 2);
 			p[i] = new_p;
 
-			cout << p[i].get_fullname() << p[i].get_years_of_birth() << p[i].get_years_of_death() << p[i].get_name_books() << endl;
+			cout << p[i].get_fullname() << p[i].get_years_of_birth() << p[i].get_years_of_death() << *p[i].get_name_books() << endl;
 		}
 	}
 	in.close(); // закрываем файл
@@ -89,10 +89,13 @@ void Keeper::Read()
 
 void Keeper::print_poet(int id)
 {
+	if (id >= size_p) { return; }
 	cout << p[id].get_fullname() << endl;
 	cout << p[id].get_years_of_birth() << endl;
 	cout << p[id].get_years_of_death() << endl;
-	cout << p[id].get_name_books() << endl;
+	int new_nub = p->get_number_of_books();
+	for (int i = 0; i < new_nub; i++)
+		cout << p[id].get_name_books()[i] << endl;
 }
 
 

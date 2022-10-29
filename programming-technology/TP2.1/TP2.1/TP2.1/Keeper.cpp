@@ -1,6 +1,25 @@
 #include "Keeper.h"
 
 
+string* Keeper::split(string str, char ch)
+{
+	stringstream stream(str);
+	string* s = new string();
+	int size = 0;
+	std::string item;
+	while (getline(stream, item, ch)) {
+		size++;
+		string* new_s = new string[size];
+		cout << "size = " << size << "\n item = " << item << "\n";
+		for (int i = 0; i < size - 1; i++) {
+			new_s[i] = s[i];
+		}
+		new_s[size - 1] = item;
+		s = new_s;
+	}
+	return s;
+}
+
 Keeper::Keeper()
 {
 	this->size_p = 0;
@@ -56,7 +75,8 @@ void Keeper::Save()
 			out << p[i].get_fullname() << endl;
 			out << p[i].get_years_of_birth() << endl;
 			out << p[i].get_years_of_death() << endl;
-			out << p[i].get_name_books() << endl;
+			for (int j = 0; j < p[i].get_number_of_books(); j++)
+				out << p[i].get_name_books()[j] << endl;
 		}
 	}
 	out.close();
@@ -71,17 +91,22 @@ void Keeper::Read()
 	ifstream in("data.txt");
 	if (in.is_open())
 	{
-		for (int i = 0; i < size_p; i++) {
+		int i = 0;
+		while(!in.eof()) {
 			getline(in, fn);
 			in >> yob;
 			in >> yod;
 			getline(in, new_name_of_book);//TODO: сделать красиво - сейчас применяется для переноса на другую строку
 			getline(in, new_name_of_book);
+			string* new_books = split(new_name_of_book, ';');
 
-			Poet new_p(fn, yob, yod, &new_name_of_book, 2);
-			p[i] = new_p;
+			int size_str = new_books->size();
+			//присваиваем новые значения
+			Poet new_p(fn, yob, yod, new_books, size_str);//исправить последний параметр
+			add_poet(new_p);
 
-			cout << p[i].get_fullname() << p[i].get_years_of_birth() << p[i].get_years_of_death() << *p[i].get_name_books() << endl;
+			print_poet(i);
+			i++;
 		}
 	}
 	in.close(); // закрываем файл

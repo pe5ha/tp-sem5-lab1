@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <fstream>
 #include "Poet.h"
+#include <sstream>    
 /*Разработать класс Keeper, который реализует контейнер для хранения и обработки
 объектов. Класс Keeper должен обеспечивать следующие функции:
 ▪ добавление и удаление производных объектов абстрактного класса Writter
@@ -14,6 +15,8 @@ private:
 	int size_p;
 	Poet* p;
 
+
+	string* split(string str, char ch);
 public:
 	//конструкторы
 	Keeper();

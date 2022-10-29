@@ -1,4 +1,0 @@
-﻿  Keeper.cpp
-C:\Users\user\Desktop\tp\programming-technology\TP2.1\TP2.1\TP2.1\Keeper.cpp(47,28): warning C4091: '': ignored on left of 'std::exception' when no variable is declared
-C:\Users\user\Desktop\tp\programming-technology\TP2.1\TP2.1\TP2.1\Keeper.cpp(104,36): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  TP2.1.vcxproj -> C:\Users\user\Desktop\tp\programming-technology\TP2.1\TP2.1\x64\Debug\TP2.1.exe

@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Writter.cpp">
+    <ClCompile Include="src\Writer.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\Keeper.cpp">
@@ -38,7 +38,7 @@
     <ClInclude Include="src\Poet.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\Writter.h">
+    <ClInclude Include="src\Writer.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="src\Keeper.h">

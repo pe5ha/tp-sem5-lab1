@@ -46,7 +46,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="src\data.txt">
+    <Text Include="data.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
   </ItemGroup>

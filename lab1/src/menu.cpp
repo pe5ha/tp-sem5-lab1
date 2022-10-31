@@ -63,14 +63,12 @@ namespace Menu {
 	void menu() {
 		//test zone
 		Keeper k;
-		/*string new_name_books[2] = {"1Kniga", "2Kniga"};
-		Poet new_p("Semyon", 2002, 2160, new_name_books, 2);
-		k.add_poet(new_p);
-
-		k.Save();*/
-		k.Read();
-
+		
+		//k.Save();
 		//
+
+
+		k.Read();
 		menu_output(1);
 		char key_tmp; //временный символ
 		char key; //опция

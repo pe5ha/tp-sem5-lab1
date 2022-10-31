@@ -31,7 +31,8 @@ public:
 
 	Poet get_poet(int id);
 	//вывод поэта
-	void print_poet(int id);
+	void print_poet();// все поэты
+	void print_poet(int id); // поэты по id
 	
 
 	void Save();

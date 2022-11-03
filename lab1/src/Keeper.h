@@ -9,7 +9,7 @@
 ▪ полное восстановление себя из файла.
 */
 
-class Keeper
+class keeper
 {
 private:
 	int size_p;
@@ -19,7 +19,9 @@ private:
 	string* split(string str, char ch);
 public:
 	//конструкторы
-	Keeper();
+	keeper();
+	keeper(int, Poet*);
+	keeper(const keeper&);
 
 	void add_poet(Poet new_p);
 	void delete_poet(int id); // мб заменить на шаблон?

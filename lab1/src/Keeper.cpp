@@ -3,18 +3,31 @@
 
 
 
-Keeper::Keeper()
+keeper::keeper()
 {
 	this->size_p = 0;
 	p = new Poet[1];
 }
 
-int Keeper::get_size()
+keeper::keeper(int size_p, Poet *p)
+{
+	this->size_p = size_p;
+	this->p = p;
+}
+
+keeper::keeper(const keeper& ref_k)
+{
+	this->size_p = ref_k.size_p;
+	this->p = ref_k.p;
+	//TODO: сделать присваивание и для других классов
+}
+
+int keeper::get_size()
 {
 	return size_p;
 }
 
-void Keeper::add_poet(Poet new_p)
+void keeper::add_poet(Poet new_p)
 {
 	size_p++;
 	Poet* new_poets = new Poet[size_p];
@@ -26,7 +39,7 @@ void Keeper::add_poet(Poet new_p)
 	p = new_poets;
 }
 
-void Keeper::delete_poet(int id)
+void keeper::delete_poet(int id)
 {
 	if (size_p <= 0) exception;
 	Poet* new_poets = new Poet[size_p - 1];
@@ -41,7 +54,7 @@ void Keeper::delete_poet(int id)
 	size_p--;
 }
 
-Poet Keeper::get_poet(int id)
+Poet keeper::get_poet(int id)
 {
 	if (id >= size_p) { cout << "замени на эксепшен!" << endl; return p[0]; }//TODO: замени на эксепшен! 
 	return p[id];
@@ -49,7 +62,7 @@ Poet Keeper::get_poet(int id)
 
 
 
-void Keeper::Save()
+void keeper::Save()
 {
 	ofstream out;          // поток для записи
 	out.open("data.txt");  // окрываем файл для записи
@@ -74,7 +87,7 @@ void Keeper::Save()
 	out.close();
 }
 
-void Keeper::Read()
+void keeper::Read()
 {
 	string fn;//новое ФИО
 	int yob;//года
@@ -118,7 +131,7 @@ void Keeper::Read()
 	in.close(); // закрываем файл
 }
 
-void Keeper::print_poet()
+void keeper::print_poet()
 {
 	for (int i = 0; i < size_p; i++) {
 		cout << "\nПоэт " << i + 1 << ": " << endl;
@@ -128,7 +141,7 @@ void Keeper::print_poet()
 
 // TODO: разобраться, почему не выводит на экран более 4-5 строчек - вероятно переполнение
 //потока из-за cout
-void Keeper::print_poet(int id)
+void keeper::print_poet(int id)
 {
 	if (id >= size_p) { return; }
 	cout << p[id].get_fullname() << endl;
@@ -140,7 +153,7 @@ void Keeper::print_poet(int id)
 		cout << p[id].get_name_books()[i] << endl;
 }
 
-string* Keeper::split(string str, char ch)
+string* keeper::split(string str, char ch)
 {
 	stringstream stream(str);
 	string* s = new string();

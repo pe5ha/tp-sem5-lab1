@@ -107,18 +107,19 @@ namespace Menu {
 				case 2: //добавить книгу в список произведений
 					add_or_delete_book();
 					break;
-				case 3: //вывод писателя
+				case 3: //вывод писателя(писателей)
 					print_writter();
 					break;
-				case 4: //вывод писателей
+				case 4: //изменение данных
+					change_data();
 					break;
-				case 5: //изменение данных
-					break;
-				case 6: //сохранить данные
+				case 5: //сохранить данные
 					k.Save();
 					break;
-				case 7: //прочитать данные
+				case 6: // прочитать данные
 					k.Read();
+					break;
+				case 7: 
 					break;
 				case 8: //
 					break;
@@ -352,6 +353,8 @@ namespace Menu {
 	{
 		k.delete_book_poet();
 	}
+
+
 	void print_writter()
 	{
 		char key_tmp; //временный символ
@@ -455,5 +458,114 @@ namespace Menu {
 			set_color(RED);
 		else set_color(WHITE);
 		cout << "Назад\n";
+	}
+	void change_data()
+	{
+		char key_tmp; //временный символ
+		char key; //опция
+		bool ENTER_;
+		short func = 1;
+		bool exit = false;
+		int id;
+
+		menu_change_data(func);
+
+		while (1) {
+			ENTER_ = false;
+			key_tmp = _getch();
+			key_tmp == 224 ? key = _getch() : key = key_tmp;
+
+			switch (key) {
+			case 80: //вниз
+				func++;
+				if (func > 4)
+					func = 1;
+				break;
+			case 72: //вверх
+				func--;
+				if (func < 1)
+					func = 4;
+				break;
+			case 13: //enter
+				ENTER_ = true;
+				break;
+			}
+			//TODO: потестить
+			if (ENTER_) { //запуск функций
+				switch (func) {
+				case 1: //Изменить данные поэта по id
+					cout << "Введите id" << endl;
+					cin >> id;
+					return;
+				case 2: //Изменить данные романиста по id
+					cout << "Введите id" << endl;
+					cin >> id;
+					break;
+				case 3: //Изменить данные фантаста по id
+					cout << "Введите id" << endl;
+					cin >> id;
+					break;
+				case 4: //Вывести всех поэтов
+					return;
+				}
+			}
+			menu_change_data(func);
+		}
+	}
+	void menu_change_data(short menu)
+	{
+		set_color(WHITE);
+		system("cls");
+
+		cout << endl << "====================================\n\n";
+		if (menu == 1)
+			set_color(RED);
+		else set_color(WHITE);
+		cout << "Изменить данные поэта по id\n";
+		if (menu == 2)
+			set_color(RED);
+		else set_color(WHITE);
+		cout << "Изменить данные романиста по id\n";
+		if (menu == 3)
+			set_color(RED);
+		else set_color(WHITE);
+		cout << "Изменить данные фантаста по id\n";
+		
+		if (menu == 4)
+			set_color(RED);
+		else set_color(WHITE);
+		cout << "Назад\n";
+	}
+	void change_p(Poet)
+	{
+		
+	}
+	void menu_change_p(short menu)
+	{
+		set_color(WHITE);
+		system("cls");
+
+		cout << endl << "====================================\n\n";
+		if (menu == 1)
+			set_color(RED);
+		else set_color(WHITE);
+		cout << "Изменить ФИО\n";
+		if (menu == 2)
+			set_color(RED);
+		else set_color(WHITE);
+		cout << "Изменить год рождения\n";
+		if (menu == 3)
+			set_color(RED);
+		else set_color(WHITE);
+		cout << "Изменить год смерти\n";
+		if (menu == 4)
+			set_color(RED);
+		else set_color(WHITE);
+		cout << "Изменить произведение\n";
+		if (menu == 5)
+			set_color(RED);
+		else set_color(WHITE);
+		cout << "Назад\n";
+
 	}
 }

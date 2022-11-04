@@ -27,5 +27,11 @@ namespace Menu {
 	//вывод писателя
 	void print_writter();
 	void menu_print_writter(short);
+
+	//изменение данных
+	void change_data();
+	void menu_change_data(short);
+	void change_p(Poet);
+	void menu_change_p(short);
 	
 }

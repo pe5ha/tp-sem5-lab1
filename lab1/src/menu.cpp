@@ -102,7 +102,7 @@ namespace Menu {
 			if (ENTER_) { //запуск функций
 				switch (func) {
 				case 1: //add a book
-					add_a_writter();
+					add_or_delete_a_writter();
 					break;
 				case 2: //add a textbook
 					break;
@@ -131,7 +131,7 @@ namespace Menu {
 			menu_output(func);
 		}
 	}
-	void add_a_writter()
+	void add_or_delete_a_writter()
 	{
 		char key_tmp; //временный символ
 		char key; //опция
@@ -139,12 +139,12 @@ namespace Menu {
 		short func = 1;
 		bool exit = false;
 
-		menu_add_a_writter(func);
+		menu_add_or_delete_a_writter(func);
 
 		while (1) {
-		ENTER_ = false;
-		key_tmp = _getch();
-		key_tmp == 224 ? key = _getch() : key = key_tmp;
+			ENTER_ = false;
+			key_tmp = _getch();
+			key_tmp == 224 ? key = _getch() : key = key_tmp;
 
 
 			switch (key) {
@@ -162,36 +162,38 @@ namespace Menu {
 				ENTER_ = true;
 				break;
 			}
+
+			//TODO: потестить
 			if (ENTER_) { //запуск функций
 				switch (func) {
 				case 1: //Добавить поэта
 					cout << "Введите ФИО поэта, его год рождения, год смерти и одно его произведение (позднее сможете добавить ещё произведения)" << endl;
-					//TODO: сделать по красоте ввод, объявить нового поэта и добавить его в keeper *p
-					break;
+					add_a_poet();
+					return;
 				case 2: //Добавить романиста
-
 					break;
 				case 3: //Добавить фантаста
 					break;
 				case 4: //Удалить поэта
-					break;
+					cout << "Введите id поэта для удаления" << endl;
+					delete_a_poet();
+					return;
 				case 5: //Удалить романиста
 					break;
 				case 6: //Удалить фантаста
 					break;
 				case 7: //Назад
 					return;
-					break;
 
 				}
 			}
-			menu_add_a_writter(func);
+			menu_add_or_delete_a_writter(func);
 		}
 	}
 
 
 
-	void menu_add_a_writter(short menu)
+	void menu_add_or_delete_a_writter(short menu)
 	{
 		set_color(WHITE);
 		system("cls");
@@ -225,5 +227,23 @@ namespace Menu {
 			set_color(RED);
 		else set_color(WHITE);
 		cout << "Назад\n";
+	}
+	void add_a_poet()
+	{
+		string fullname;
+		int year_of_birth, year_of_death;
+		string* books = new string[1];
+		cin >> fullname;
+		cin >> year_of_birth;
+		cin >> year_of_death;
+		cin >> books[0];
+		Poet p(fullname, year_of_birth, year_of_death, books, 1);
+		k.add_poet(p);
+	}
+	void delete_a_poet()
+	{
+		int id;
+		cin >> id;
+		k.delete_poet(id);
 	}
 }

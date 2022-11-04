@@ -33,7 +33,6 @@ void keeper::add_poet(Poet new_p)
 	Poet* new_poets = new Poet[size_p];
 	for (int i = 0; i < size_p - 1; i++) {
 		new_poets[i] = p[i];
-		//cout << new_poets[i].get_fullname() << endl;;
 	}
 	new_poets[size_p - 1] = new_p; // проверить
 	p = new_poets;
@@ -151,6 +150,16 @@ void keeper::print_poet(int id)
 	if (p[id].get_number_of_books() == 0) { cout << "Нету книг" << endl; }
 	for (int i = 1; i <= new_nub; i++)
 		cout << p[id].get_name_books()[i] << endl;
+}
+
+void keeper::add_book_poet(string book)
+{
+	p->add_book(book);
+}
+
+void keeper::delete_book_poet()
+{
+	p->delete_book();
 }
 
 string* keeper::split(string str, char ch)

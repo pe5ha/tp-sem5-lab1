@@ -77,6 +77,11 @@ void Poet::add_book(string new_book)
 	Writter::add_book(new_book);
 }
 
+void Poet::delete_book()
+{
+	Writter::delete_book();
+}
+
 int Poet::get_number_of_books()
 {
 	return Writter::get_number_of_books();

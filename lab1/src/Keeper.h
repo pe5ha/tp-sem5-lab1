@@ -15,7 +15,6 @@ private:
 	int size_p;
 	Poet* p;
 
-
 	string* split(string str, char ch);
 public:
 	//конструкторы
@@ -35,7 +34,9 @@ public:
 	//вывод поэта
 	void print_poet();// все поэты
 	void print_poet(int id); // поэты по id
-	
+
+	void add_book_poet(string);
+	void delete_book_poet();
 
 	void Save();
 	void Read();

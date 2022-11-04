@@ -16,4 +16,9 @@ namespace Menu {
 	void menu_add_or_delete_a_writter(short);
 	void add_a_poet();
 	void delete_a_poet();
+
+	void add_or_delete_book();
+	void menu_add_book(short);
+	void add_book_poet();
+	void delete_book_poet();
 }

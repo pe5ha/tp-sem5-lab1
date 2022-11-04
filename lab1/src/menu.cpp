@@ -16,43 +16,43 @@ namespace Menu {
 		if (menu == 1)
 			set_color(RED);
 		else set_color(WHITE);
-		cout << "Добавить писателя\n";
+		cout << "Добавить или удалить писателя\n";
 		if (menu == 2)
 			set_color(RED);
 		else set_color(WHITE);
-		cout << "Удалить книгу поэта\n";
+		cout << "добавить книгу в список произведений или удалить её\n";
 		if (menu == 3)
 			set_color(RED);
 		else set_color(WHITE);
-		cout << "Вывод книг поэта\n";
+		cout << "Вывести писателя\n";
 		if (menu == 4)
 			set_color(RED);
 		else set_color(WHITE);
-		cout << "Delete the last element\n";
+		cout << "Вывести всех писателей\n";
 		if (menu == 5)
 			set_color(RED);
 		else set_color(WHITE);
-		cout << "Delete by index\n";
+		cout << "изменить данные\n";
 		if (menu == 6)
 			set_color(RED);
 		else set_color(WHITE);
-		cout << "Out keeper\n";
+		cout << "сохранить данные\n";
 		if (menu == 7)
 			set_color(RED);
 		else set_color(WHITE);
-		cout << "Change\n";
+		cout << "прочитать данные\n";
 		if (menu == 8)
 			set_color(RED);
 		else set_color(WHITE);
-		cout << "Clear\n";
+		cout << "ненужная строка\n";
 		if (menu == 9)
 			set_color(RED);
 		else set_color(WHITE);
-		cout << "Save to file\n";
+		cout << "ненужная строка\n";
 		if (menu == 10)
 			set_color(RED);
 		else set_color(WHITE);
-		cout << "Extract from file\n";
+		cout << "ненужная строка\n";
 		if (menu == 11)
 			set_color(RED);
 		else set_color(WHITE);
@@ -101,22 +101,25 @@ namespace Menu {
 
 			if (ENTER_) { //запуск функций
 				switch (func) {
-				case 1: //add a book
+				case 1: //добавить или удалить писателя
 					add_or_delete_a_writter();
 					break;
-				case 2: //add a textbook
+				case 2: //добавить книгу в список произведений
+					add_or_delete_book();
 					break;
-				case 3: //add a chancellery
+				case 3: //вывод писателя
 					break;
-				case 4: //Delete the last element
+				case 4: //вывод писателей
 					break;
-				case 5: //Delete by index
+				case 5: //изменение данных
 					break;
-				case 6: //Out keepe
+				case 6: //сохранить данные
 					break;
-				case 7: //Change
+				case 7: //прочитать данные
+					k.Save();
 					break;
-				case 8: //Clear
+				case 8: //
+					k.Read();
 					break;
 				case 9: //Save to file
 					break;
@@ -192,7 +195,6 @@ namespace Menu {
 	}
 
 
-
 	void menu_add_or_delete_a_writter(short menu)
 	{
 		set_color(WHITE);
@@ -245,5 +247,110 @@ namespace Menu {
 		int id;
 		cin >> id;
 		k.delete_poet(id);
+	}
+	void add_or_delete_book()
+	{
+		char key_tmp; //временный символ
+		char key; //опция
+		bool ENTER_;
+		short func = 1;
+		bool exit = false;
+
+		menu_add_book(func);
+
+		while (1) {
+			ENTER_ = false;
+			key_tmp = _getch();
+			key_tmp == 224 ? key = _getch() : key = key_tmp;
+
+
+			switch (key) {
+			case 80: //вниз
+				func++;
+				if (func > 7)
+					func = 1;
+				break;
+			case 72: //вверх
+				func--;
+				if (func < 1)
+					func = 7;
+				break;
+			case 13: //enter
+				ENTER_ = true;
+				break;
+			}
+
+			//TODO: потестить
+			if (ENTER_) { //запуск функций
+				switch (func) {
+				case 1: //Добавить книгу поэта
+					add_book_poet();
+					return;
+				case 2: //Добавить книгу романиста
+					break;
+				case 3: //Добавить книгу фантаста
+					break;
+				case 4: //Удалить книгу поэта
+
+					return;
+				case 5: //Удалить книгу романиста
+					break;
+				case 6: //Удалить книгу фантаста
+					break;
+				case 7: //Назад
+					return;
+
+				}
+			}
+			menu_add_book(func);
+		}
+	}
+	void menu_add_book(short menu)
+	{
+		{
+			set_color(WHITE);
+			system("cls");
+
+			cout << endl << "====================================\n\n";
+			if (menu == 1)
+				set_color(RED);
+			else set_color(WHITE);
+			cout << "Добавить книгу поэту\n";
+			if (menu == 2)
+				set_color(RED);
+			else set_color(WHITE);
+			cout << "Добавить книгу романисту\n";
+			if (menu == 3)
+				set_color(RED);
+			else set_color(WHITE);
+			cout << "Добавить книгу фантасту\n";
+			if (menu == 4)
+				set_color(RED);
+			else set_color(WHITE);
+			cout << "Удалить книгу поэту\n";
+			if (menu == 5)
+				set_color(RED);
+			else set_color(WHITE);
+			cout << "Удалить книгу романисту\n";
+			if (menu == 6)
+				set_color(RED);
+			else set_color(WHITE);
+			cout << "Удалить книгу фантасту\n";
+			if (menu == 7)
+				set_color(RED);
+			else set_color(WHITE);
+			cout << "Назад\n";
+		}
+	}
+	void add_book_poet()
+	{
+		string new_book;
+		cout << "Введите название книги" << endl;
+		cin >> new_book;
+		k.add_book_poet(new_book);
+	}
+	void delete_book_poet()
+	{
+		k.delete_book_poet();
 	}
 }

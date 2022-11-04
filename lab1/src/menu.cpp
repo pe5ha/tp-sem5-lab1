@@ -108,18 +108,19 @@ namespace Menu {
 					add_or_delete_book();
 					break;
 				case 3: //вывод писателя
+					print_writter();
 					break;
 				case 4: //вывод писателей
 					break;
 				case 5: //изменение данных
 					break;
 				case 6: //сохранить данные
-					break;
-				case 7: //прочитать данные
 					k.Save();
 					break;
-				case 8: //
+				case 7: //прочитать данные
 					k.Read();
+					break;
+				case 8: //
 					break;
 				case 9: //Save to file
 					break;
@@ -307,7 +308,6 @@ namespace Menu {
 	}
 	void menu_add_book(short menu)
 	{
-		{
 			set_color(WHITE);
 			system("cls");
 
@@ -340,7 +340,6 @@ namespace Menu {
 				set_color(RED);
 			else set_color(WHITE);
 			cout << "Назад\n";
-		}
 	}
 	void add_book_poet()
 	{
@@ -352,5 +351,109 @@ namespace Menu {
 	void delete_book_poet()
 	{
 		k.delete_book_poet();
+	}
+	void print_writter()
+	{
+		char key_tmp; //временный символ
+		char key; //опция
+		bool ENTER_;
+		short func = 1;
+		bool exit = false;
+		int id;
+
+		menu_print_writter(func);
+
+		while (1) {
+			ENTER_ = false;
+			key_tmp = _getch();
+			key_tmp == 224 ? key = _getch() : key = key_tmp;
+
+
+			switch (key) {
+			case 80: //вниз
+				func++;
+				if (func > 7)
+					func = 1;
+				break;
+			case 72: //вверх
+				func--;
+				if (func < 1)
+					func = 7;
+				break;
+			case 13: //enter
+				ENTER_ = true;
+				break;
+			}
+			//TODO: потестить
+			if (ENTER_) { //запуск функций
+				switch (func) {
+				case 1: //Вывести поэта по id
+					cin >> id;
+					k.print_poet(id);
+					cout << "Нажмите ENTER чтобы продолжить продолжить!" << endl;
+					_getch(); 
+					return;
+				case 2: //Вывести романиста по id
+					cin >> id;
+					break;
+				case 3: //Вывести фантаста по id
+					cin >> id;
+					break;
+				case 4: //Вывести всех поэтов
+					k.print_poet();
+					cout << "Нажмите ENTER чтобы продолжить продолжить!" << endl;
+					_getch();
+					return;
+				case 5: //Вывести всех романистов
+					break;
+				case 6: //Вывести всех фантастов
+					break;
+				case 7: //Вывести всех писателей
+					break;
+				case 8:
+					return;
+				}
+			}
+			menu_print_writter(func);
+		}
+	}
+	void menu_print_writter(short menu)
+	{
+		set_color(WHITE);
+		system("cls");
+
+		cout << endl << "====================================\n\n";
+		if (menu == 1)
+			set_color(RED);
+		else set_color(WHITE);
+		cout << "Вывод поэта по id\n";
+		if (menu == 2)
+			set_color(RED);
+		else set_color(WHITE);
+		cout << "Вывод романиста по id\n";
+		if (menu == 3)
+			set_color(RED);
+		else set_color(WHITE);
+		cout << "Вывод фантаста по id\n";
+		if (menu == 4)
+			set_color(RED);
+		else set_color(WHITE);
+		cout << "Вывод всех поэтов\n";
+		if (menu == 5)
+			set_color(RED);
+		else set_color(WHITE);
+		cout << "Вывод всех романистов\n";
+		if (menu == 6)
+			set_color(RED);
+		else set_color(WHITE);
+		cout << "Вывод всех фантастов\n";
+		if (menu == 7)
+			set_color(RED);
+		else set_color(WHITE);
+		cout << "Вывод всех писателей\n";
+		if (menu == 8)
+			set_color(RED);
+		else set_color(WHITE);
+		cout << "Назад\n";
 	}
 }

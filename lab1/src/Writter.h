@@ -11,6 +11,7 @@ protected:
 	int number_of_books;
 
 	virtual void add_book(string) = 0;
+	virtual void delete_book() = 0;
 public:
 	//~Writter(); TODO: - сделать деструктор
 
@@ -21,7 +22,4 @@ public:
 	virtual void set_fullname(string fullname) = 0;
 	virtual void set_name_books(string *name_books) = 0;
 	virtual void set_number_of_books(int new_nob) = 0;
-
-	//TODO: add_book();
-	//delete_book();
 };

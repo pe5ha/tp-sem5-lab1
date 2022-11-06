@@ -27,6 +27,6 @@ public:
 
 	//изменение данных
 	void add_book(string)override;
-	//TODO: void add_book(string);
+	void delete_book()override;
 };
 

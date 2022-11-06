@@ -9,17 +9,18 @@
 ▪ полное восстановление себя из файла.
 */
 
-class Keeper
+class keeper
 {
 private:
 	int size_p;
 	Poet* p;
 
-
 	string* split(string str, char ch);
 public:
 	//конструкторы
-	Keeper();
+	keeper();
+	keeper(int, Poet*);
+	keeper(const keeper&);
 
 	void add_poet(Poet new_p);
 	void delete_poet(int id); // мб заменить на шаблон?
@@ -31,8 +32,11 @@ public:
 
 	Poet get_poet(int id);
 	//вывод поэта
-	void print_poet(int id);
-	
+	void print_poet();// все поэты
+	void print_poet(int id); // поэты по id
+
+	void add_book_poet(string);
+	void delete_book_poet();
 
 	void Save();
 	void Read();

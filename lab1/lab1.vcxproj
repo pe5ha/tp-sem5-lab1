@@ -143,13 +143,13 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\menu.cpp" />
     <ClCompile Include="src\Poet.cpp" />
-    <ClCompile Include="src\Writer.cpp" />
+    <ClCompile Include="src\Writter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Keeper.h" />
     <ClInclude Include="src\menu.h" />
     <ClInclude Include="src\Poet.h" />
-    <ClInclude Include="src\Writer.h" />
+    <ClInclude Include="src\Writter.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\data.txt" />

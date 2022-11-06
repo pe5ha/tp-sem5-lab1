@@ -72,6 +72,11 @@ void Poet::set_number_of_books(int new_nob)
 	Writter::set_number_of_books(new_nob);
 }
 
+void Poet::set_book(string book, int old_book_id)
+{
+	Writter::set_book(book, old_book_id);
+}
+
 void Poet::add_book(string new_book)
 {
 	Writter::add_book(new_book);

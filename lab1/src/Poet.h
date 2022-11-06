@@ -25,6 +25,8 @@ public:
 	void set_name_books(string* name_books)override;
 	void set_number_of_books(int new_nob)override;
 
+	void set_book(string, int old_book_id)override;
+
 	//изменение данных
 	void add_book(string)override;
 	void delete_book()override;

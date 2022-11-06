@@ -48,3 +48,8 @@ void Writter::set_number_of_books(int new_nob)
 {
 	number_of_books = new_nob;
 }
+
+void Writter::set_book(string book, int old_book_id)
+{
+	this->name_books[old_book_id] = book;
+}

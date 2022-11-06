@@ -28,19 +28,19 @@ namespace Menu {
 		if (menu == 4)
 			set_color(RED);
 		else set_color(WHITE);
-		cout << "Вывести всех писателей\n";
+		cout << "изменить данные\n";
 		if (menu == 5)
 			set_color(RED);
 		else set_color(WHITE);
-		cout << "изменить данные\n";
+		cout << "сохранить данные\n";
 		if (menu == 6)
 			set_color(RED);
 		else set_color(WHITE);
-		cout << "сохранить данные\n";
+		cout << "прочитать данные\n";
 		if (menu == 7)
 			set_color(RED);
 		else set_color(WHITE);
-		cout << "прочитать данные\n";
+		cout << "ненужная строка\n";
 		if (menu == 8)
 			set_color(RED);
 		else set_color(WHITE);
@@ -391,6 +391,7 @@ namespace Menu {
 			if (ENTER_) { //запуск функций
 				switch (func) {
 				case 1: //Вывести поэта по id
+					cout << "Введите id" << endl;
 					cin >> id;
 					k.print_poet(id);
 					cout << "Нажмите ENTER чтобы продолжить продолжить!" << endl;
@@ -496,6 +497,7 @@ namespace Menu {
 				case 1: //Изменить данные поэта по id
 					cout << "Введите id" << endl;
 					cin >> id;
+					change_p(k.get_poet(id));
 					return;
 				case 2: //Изменить данные романиста по id
 					cout << "Введите id" << endl;
@@ -536,9 +538,71 @@ namespace Menu {
 		else set_color(WHITE);
 		cout << "Назад\n";
 	}
-	void change_p(Poet)
+	void change_p(Poet poet)
 	{
-		
+		char key_tmp; //временный символ
+		char key; //опция
+		bool ENTER_;
+		short func = 1;
+		bool exit = false;
+		string fullname;
+		int year_of_birth;
+		int year_of_death;
+		string book;
+		int id;
+		menu_change_p(func);
+
+		while (1) {
+			ENTER_ = false;
+			key_tmp = _getch();
+			key_tmp == 224 ? key = _getch() : key = key_tmp;
+
+			switch (key) {
+			case 80: //вниз
+				func++;
+				if (func > 5)
+					func = 1;
+				break;
+			case 72: //вверх
+				func--;
+				if (func < 1)
+					func = 5;
+				break;
+			case 13: //enter
+				ENTER_ = true;
+				break;
+			}
+			//TODO: потестить
+			if (ENTER_) { //запуск функций
+				switch (func) {
+				case 1: //Изменить данные поэта по id
+					cout << "Введите новое ФИО" << endl;
+					cin >> fullname;
+					poet.set_fullname(fullname);
+					return;
+				case 2: //Изменить данные романиста по id
+					cout << "Введите новую дату рождения" << endl;
+					cin >> year_of_birth;
+					poet.set_years_of_birth(year_of_birth);
+					break;
+				case 3: //Изменить данные фантаста по id
+					cout << "Введите новую дату смерти" << endl;
+					cin >> year_of_death;
+					poet.set_years_of_death(year_of_death);
+					break;
+				case 4:
+					cout << "Введите id книги, которую хотите изменить" << endl;
+					cin >> id;
+					cout << "Введите название нового произведения" << endl;
+					cin >> book;
+					poet.set_book(book, id);
+					return;
+				case 5: //Вывести всех поэтов
+					return;
+				}
+			}
+			menu_change_p(func);
+		}
 	}
 	void menu_change_p(short menu)
 	{

@@ -22,4 +22,6 @@ public:
 	virtual void set_fullname(string fullname) = 0;
 	virtual void set_name_books(string *name_books) = 0;
 	virtual void set_number_of_books(int new_nob) = 0;
+
+	virtual void set_book(string, int old_book_id) = 0;
 };

@@ -142,12 +142,14 @@
     <ClCompile Include="src\Keeper.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\menu.cpp" />
+    <ClCompile Include="src\novelist.cpp" />
     <ClCompile Include="src\Poet.cpp" />
     <ClCompile Include="src\Writter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Keeper.h" />
     <ClInclude Include="src\menu.h" />
+    <ClInclude Include="src\novelist.h" />
     <ClInclude Include="src\Poet.h" />
     <ClInclude Include="src\Writter.h" />
   </ItemGroup>

@@ -1,3 +1,4 @@
+#pragma once
 #include "Writter.h"
 class Poet : public Writter
 {

@@ -34,9 +34,9 @@ keeper::keeper(const keeper& ref_k)
 	//TODO: сделать присваивание и для других классов
 }
 
-int keeper::get_size_p()
+int keeper::get_size()
 {
-	return size_p;
+	return size_p + size_n + size_f;
 }
 
 void keeper::add_poet(Poet new_p)
@@ -141,17 +141,19 @@ void keeper::Save()
 {
 	ofstream out;          // поток для записи
 	out.open("data.txt");  // окрываем файл для записи
+	bool firstIteration = true;   // проверка на первую строку в сохранение (избежание первого \n)
 	if (out.is_open())
 	{
 		//записываем поэтов
 		for (int i = 0; i < size_p; i++) {
-			if (i != 0)
-				out << "\n";
+			if (firstIteration == true) firstIteration = false;
+			else out << "\n";
+
 			out << "Poet" << endl;
 			out << p[i].get_fullname() << endl;
 			out << p[i].get_years_of_birth() << endl;
 			out << p[i].get_years_of_death() << endl;
-			
+
 			//записываем количество книг
 			out << p[i].get_number_of_books();
 			for (int j = 0; j < p[i].get_number_of_books(); j++) {
@@ -160,8 +162,8 @@ void keeper::Save()
 		}
 		//записываем новелистов
 		for (int i = 0; i < size_n; i++) {
-			if (i != 0)
-				out << "\n";
+			if (firstIteration == true) firstIteration = false;
+			else out << "\n";
 			out << "Novelist" << endl;
 			out << n[i].get_fullname() << endl;
 			out << n[i].get_years_of_birth() << endl;
@@ -172,12 +174,12 @@ void keeper::Save()
 			for (int j = 0; j < n[i].get_number_of_books(); j++) {
 				out << ";" << n[i].get_name_books()[j];
 			}
-			out << n[i].get_biography() << endl;
+			out << '\n' << n[i].get_biography();
 		}
 		// записываем фантастов
-		for (int i = 0; i < size_n; i++) {
-			if (i != 0)
-				out << "\n";
+		for (int i = 0; i < size_f; i++) {
+			if (firstIteration == true) firstIteration = false;
+			else out << "\n";
 			out << "Fantast" << endl;
 			out << f[i].get_fullname() << endl;
 			//записываем количество книг
@@ -185,7 +187,7 @@ void keeper::Save()
 			for (int j = 0; j < f[i].get_number_of_books(); j++) {
 				out << ";" << f[i].get_name_books()[j];
 			}
-			out << f[i].get_isFilmed() << endl;
+			out << '\n' << f[i].get_isFilmed();
 		}
 	}
 	out.close();
@@ -207,7 +209,7 @@ void keeper::Read()
 		4-5 строки - получаем годы жизни
 		и прочее...
 		*/
-		while(!in.eof()) {
+		while (!in.eof()) {
 			string c;
 			getline(in, c);
 			if (c == "Poet") {/*TODO: Вынести в отедельную функцию*/
@@ -241,7 +243,7 @@ void keeper::Read()
 				string* new_books = split(new_name_of_book, ';');
 				int size_books = stoi(new_books[0]);
 				bool isFilmed; in >> isFilmed; // \n - проверить на перенос строки
-				
+
 				//присваиваем новые значения
 				Fantast new_f(fn, new_books, size_books, isFilmed);
 				add_fantast(new_f);
@@ -259,19 +261,18 @@ void keeper::print_poet()
 	}
 }
 
-// TODO: разобраться, почему не выводит на экран более 4-5 строчек - вероятно переполнение
-//потока из-за cout
 void keeper::print_poet(int id)
 {
 	if (id >= size_p) { return; }
-	cout << p[id].get_fullname() << endl;
-	cout << p[id].get_years_of_birth() << endl;
-	cout << p[id].get_years_of_death() << endl;
-	int new_nub = p[id].get_number_of_books();
+	cout << "ФИО: " << p[id].get_fullname() << endl;
+	cout << "Годы жизни: " << p[id].get_years_of_birth() << " - " << p[id].get_years_of_death() << endl;
 	if (p[id].get_number_of_books() == 0) { cout << "Нету книг" << endl; }
-	if (size_p == 0) { cout << "Книг нет" << endl; return; }
-	for (int i = 1; i <= new_nub; i++)
-		cout << p[id].get_name_books()[i] << endl;
+	else {
+		for (int i = 1; i <= p[id].get_number_of_books(); i++) {
+			cout << "Книга " << i << ": ";
+			cout << p[id].get_name_books()[i] << endl;
+		}
+	}
 }
 
 void keeper::print_novelist()
@@ -285,22 +286,22 @@ void keeper::print_novelist()
 void keeper::print_novelist(int id)
 {
 	if (id >= size_n) { return; }
-	cout << n[id].get_fullname() << endl;
-	cout << n[id].get_years_of_birth() << endl;
-	cout << n[id].get_years_of_death() << endl;
-	cout << n[id].get_biography() << endl;
-	int new_nub = n[id].get_number_of_books();
+	cout << "ФИО: " << n[id].get_fullname() << endl;
+	cout << "Годы жизни: " << n[id].get_years_of_birth() << " - " << n[id].get_years_of_death() << endl;
 	if (n[id].get_number_of_books() == 0) { cout << "Нету книг" << endl; }
-	if (size_n == 0) { cout << "Книг нет" << endl; return; }
-	for (int i = 1; i <= new_nub; i++)
-		cout << n[id].get_name_books()[i] << endl;
-	cout << n[id].get_biography() << endl;
+	else {
+		for (int i = 1; i <= n[id].get_number_of_books(); i++) {
+			cout << "Книга " << i << ": ";
+			cout << n[id].get_name_books()[i] << endl;
+		}
+	}
+	cout << "Краткая биография: " << n[id].get_biography() << endl;
 }
 
 void keeper::print_fantast()
 {
 	for (int i = 0; i < size_f; i++) {
-		cout << "\nПоэт " << i + 1 << ": " << endl;
+		cout << "\nФантаст " << i + 1 << ": " << endl;
 		print_fantast(i);
 	}
 }
@@ -308,13 +309,15 @@ void keeper::print_fantast()
 void keeper::print_fantast(int id)
 {
 	if (id >= size_f) { return; }
-	cout << f[id].get_fullname() << endl;
-	int new_nub = f[id].get_number_of_books();
+	cout << "ФИО: " << f[id].get_fullname() << endl;
 	if (f[id].get_number_of_books() == 0) { cout << "Нету книг" << endl; }
-	if (size_f == 0) { cout << "Книг нет" << endl; return; }
-	for (int i = 1; i <= new_nub; i++)
-		cout << f[id].get_name_books()[i] << endl;
-	f->isFilmed ? cout << "Снят по крайней мере 1 фильм" : cout << "Не снимались фильмы";
+	else {
+		for (int i = 1; i <= f[id].get_number_of_books(); i++) {
+			cout << "Книга " << i << ": ";
+			cout << f[id].get_name_books()[i] << endl;
+		}
+	}
+	f[id].isFilmed ? cout << "Снят по крайней мере 1 фильм" : cout << "Не снимались фильмы";
 }
 
 void keeper::print_all()
@@ -331,7 +334,11 @@ void keeper::add_book_poet(string book, int id)
 
 void keeper::delete_book_poet(int id)
 {
-	p[id].delete_book();
+	if (p[id].get_number_of_books() == 0) {
+		cout << "Удалять нечего" << endl;
+		return;
+	}
+	else p[id].delete_book();
 }
 
 void keeper::add_book_novelist(string book, int id)
@@ -341,7 +348,11 @@ void keeper::add_book_novelist(string book, int id)
 
 void keeper::delete_book_novelist(int id)
 {
-	n[id].delete_book();
+	if (n[id].get_number_of_books() == 0) {
+		cout << "Удалять нечего" << endl;
+		return;
+	}
+	else n[id].delete_book();
 }
 
 void keeper::add_book_fantast(string book, int id)
@@ -351,7 +362,11 @@ void keeper::add_book_fantast(string book, int id)
 
 void keeper::delete_book_fantast(int id)
 {
-	f[id].delete_book();
+	if (f[id].get_number_of_books() == 0) {
+		cout << "Удалять нечего" << endl;
+		return;
+	}
+	else f[id].delete_book();
 }
 
 string* keeper::split(string str, char ch)

@@ -15,7 +15,7 @@ void Writter::delete_book()
 {
 	number_of_books--;
 	string* new_books = new string[number_of_books];
-	for (int i = 0; i < number_of_books - 1; i++) {
+	for (int i = 0; i < number_of_books; i++) {
 		new_books[i] = name_books[i];
 	}
 	name_books = new_books;

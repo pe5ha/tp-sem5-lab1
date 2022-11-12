@@ -664,7 +664,7 @@ namespace Menu {
 				switch (func) {
 				case 1: //Изменить данные поэта по id
 					cout << "Введите новое ФИО" << endl;
-					cin >> fullname;
+					getline(cin,fullname);
 					poet.set_fullname(fullname);
 					return;
 				case 2: //Изменить данные романиста по id
@@ -681,7 +681,7 @@ namespace Menu {
 					cout << "Введите id книги, которую хотите изменить" << endl;
 					cin >> id;
 					cout << "Введите название нового произведения" << endl;
-					cin >> book;
+					getline(cin,book);
 					poet.set_book(book, id);
 					return;
 				case 5: //Вывести всех поэтов
@@ -759,7 +759,7 @@ namespace Menu {
 				switch (func) {
 				case 1: //Изменить данные поэта по id
 					cout << "Введите новое ФИО" << endl;
-					cin >> fullname;
+					getline(cin, fullname);
 					novelist.set_fullname(fullname);
 					break;
 				case 2: //Изменить данные романиста по id
@@ -776,12 +776,13 @@ namespace Menu {
 					cout << "Введите id книги, которую хотите изменить" << endl;
 					cin >> id;
 					cout << "Введите название нового произведения" << endl;
-					cin >> book;
+					getline(cin,book);
 					novelist.set_book(book, id);
 					break;
 				case 5:
 					cout << "Введите новую биографию для романиста" << endl;
-					cin >> bio;
+					getline(cin, bio);
+					novelist.set_biography(bio);
 					break;
 				case 6:
 					return;
@@ -861,14 +862,14 @@ namespace Menu {
 				switch (func) {
 				case 1: 
 					cout << "Введите новое ФИО" << endl;
-					cin >> fullname;
+					getline(cin, fullname);
 					fantast.set_fullname(fullname);
 					break;
 				case 2: 
 					cout << "Введите id книги, которую хотите изменить" << endl;
 					cin >> id;
 					cout << "Введите название нового произведения" << endl;
-					cin >> book;
+					getline(cin,book);
 					fantast.set_book(book, id);
 					break;
 				case 3: 

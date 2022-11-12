@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\fantast.cpp" />
     <ClCompile Include="src\Keeper.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\menu.cpp" />
@@ -147,6 +148,7 @@
     <ClCompile Include="src\Writter.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\fantast.h" />
     <ClInclude Include="src\Keeper.h" />
     <ClInclude Include="src\menu.h" />
     <ClInclude Include="src\novelist.h" />

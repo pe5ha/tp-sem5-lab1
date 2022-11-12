@@ -178,15 +178,20 @@ namespace Menu {
 					add_a_novelist();
 					break;
 				case 3: //Добавить фантаста
+					cout << "Введите ФИО фантаста и одно его произведение (позднее сможете добавить ещё произведения), 1 - если снят фильм, 0 если не снят" << endl;
+					add_a_fantast();
 					break;
 				case 4: //Удалить поэта
 					cout << "Введите id поэта для удаления" << endl;
 					delete_a_poet();
 					return;
 				case 5: //Удалить романиста
+					cout << "Введите id поэта для удаления" << endl;
 					delete_a_novelist();
 					break;
 				case 6: //Удалить фантаста
+					cout << "Введите id поэта для удаления" << endl;
+					delete_a_fantast();
 					break;
 				case 7: //Назад
 					return;
@@ -273,6 +278,24 @@ namespace Menu {
 		cin >> id;
 		k.delete_novelist(id);
 	}
+	void add_a_fantast()
+	{
+		string fullname;
+		string* books = new string[1];
+		string isFilmed;
+		getline(cin, fullname);
+		getline(cin, books[0]);
+		getline(cin, isFilmed);
+		int IF = stoi(isFilmed);
+		Fantast f(fullname,books, 1, IF);
+		k.add_fantast(f);
+	}
+	void delete_a_fantast()
+	{
+		int id;
+		cin >> id;
+		k.delete_fantast(id);
+	}
 	void add_or_delete_book()
 	{
 		char key_tmp; //временный символ
@@ -315,7 +338,7 @@ namespace Menu {
 					add_book_novelist();
 					break;
 				case 3: //Добавить книгу фантаста
-
+					add_book_fantast();
 					break;
 				case 4: //Удалить книгу поэта
 					delete_book_poet();
@@ -324,6 +347,7 @@ namespace Menu {
 					delete_book_novelist();
 					break;
 				case 6: //Удалить книгу фантаста
+					delete_book_fantast();
 					break;
 				case 7: //Назад
 					return;
@@ -370,10 +394,11 @@ namespace Menu {
 	}
 	void add_book_poet()
 	{
-		string new_book; int id;
-		cout << "Введите название книги и id через ENTER" << endl;
-		cin >> new_book;
-		cin >> id;
+		string new_book; string idStr; int id;
+		cout << "Введите название книги и id поэта через ENTER" << endl;
+		getline(cin, new_book);
+		getline(cin, idStr);
+		id = stoi(idStr);
 		k.add_book_poet(new_book, id);
 	}
 	void delete_book_poet()
@@ -386,10 +411,11 @@ namespace Menu {
 
 	void add_book_novelist()
 	{
-		string new_book; int id;
-		cout << "Введите название книги и id через ENTER" << endl;
-		cin >> new_book;
-		cin >> id;
+		string new_book; string idStr; int id;
+		cout << "Введите название книги и id романиста через ENTER" << endl;
+		getline(cin, new_book);
+		getline(cin, idStr);
+		id = stoi(idStr);
 		k.add_book_novelist(new_book, id);
 	}
 
@@ -399,6 +425,24 @@ namespace Menu {
 		cout << "Введите id" << endl;
 		cin >> id;
 		k.delete_book_novelist(id);
+	}
+
+	void add_book_fantast()
+	{
+		string new_book; string idStr; int id;
+		cout << "Введите название книги и id фантаста через ENTER" << endl;
+		getline(cin, new_book);
+		getline(cin, idStr);
+		id = stoi(idStr);
+		k.add_book_fantast(new_book, id);
+	}
+
+	void delete_book_fantast()
+	{
+		int id;
+		cout << "Введите id" << endl;
+		cin >> id;
+		k.delete_book_fantast(id);
 	}
 
 
@@ -417,7 +461,6 @@ namespace Menu {
 			ENTER_ = false;
 			key_tmp = _getch();
 			key_tmp == 224 ? key = _getch() : key = key_tmp;
-
 
 			switch (key) {
 			case 80: //вниз
@@ -452,7 +495,11 @@ namespace Menu {
 					_getch();
 					break;
 				case 3: //Вывести фантаста по id
+					cout << "Введите id" << endl;
 					cin >> id;
+					k.print_fantast(id);
+					cout << "Нажмите ENTER чтобы продолжить продолжить!" << endl;
+					_getch();
 					break;
 				case 4: //Вывести всех поэтов
 					k.print_poet();
@@ -465,6 +512,9 @@ namespace Menu {
 					_getch();
 					break;
 				case 6: //Вывести всех фантастов
+					k.print_fantast();
+					cout << "Нажмите ENTER чтобы продолжить продолжить!" << endl;
+					_getch();
 					break;
 				case 7: //Вывести всех писателей
 					k.print_all();
@@ -564,6 +614,7 @@ namespace Menu {
 				case 3: //Изменить данные фантаста по id
 					cout << "Введите id" << endl;
 					cin >> id;
+					change_f(k.get_fantast(id));
 					break;
 				case 4: //Вывести всех поэтов
 					return;
@@ -788,6 +839,91 @@ namespace Menu {
 		else set_color(WHITE);
 		cout << "Изменить биографию\n";
 		if (menu == 6)
+			set_color(RED);
+		else set_color(WHITE);
+		cout << "Назад\n";
+	}
+	void change_f(Fantast fantast)
+	{
+		char key_tmp; //временный символ
+		char key; //опция
+		bool ENTER_;
+		short func = 1;
+		bool exit = false;
+		string fullname;
+		int year_of_birth;
+		int year_of_death;
+		string book;
+		int id;
+		int isFilmed;
+		menu_change_f(func);
+
+		while (1) {
+			ENTER_ = false;
+			key_tmp = _getch();
+			key_tmp == 224 ? key = _getch() : key = key_tmp;
+
+			switch (key) {
+			case 80: //вниз
+				func++;
+				if (func > 4)
+					func = 1;
+				break;
+			case 72: //вверх
+				func--;
+				if (func < 1)
+					func = 4;
+				break;
+			case 13: //enter
+				ENTER_ = true;
+				break;
+			}
+			//TODO: потестить
+			if (ENTER_) { //запуск функций
+				switch (func) {
+				case 1: 
+					cout << "Введите новое ФИО" << endl;
+					cin >> fullname;
+					fantast.set_fullname(fullname);
+					break;
+				case 2: 
+					cout << "Введите id книги, которую хотите изменить" << endl;
+					cin >> id;
+					cout << "Введите название нового произведения" << endl;
+					cin >> book;
+					fantast.set_book(book, id);
+					break;
+				case 3: 
+					cout << "Введите 1 если фильм снят, если не снят - введите 0";
+					cin >> isFilmed;
+					fantast.set_isFilmed(isFilmed);
+					break;
+				case 4:
+					return;
+				}
+			}
+			menu_change_f(func);
+		}
+	}
+	void menu_change_f(short menu)
+	{
+		set_color(WHITE);
+		system("cls");
+
+		cout << endl << "====================================\n\n";
+		if (menu == 1)
+			set_color(RED);
+		else set_color(WHITE);
+		cout << "Изменить ФИО\n";
+		if (menu == 2)
+			set_color(RED);
+		else set_color(WHITE);
+		cout << "Изменить произведение\n";
+		if (menu == 3)
+			set_color(RED);
+		else set_color(WHITE);
+		cout << "Изменить пункт 'Снят ли фильм'? \n";
+		if (menu == 4)
 			set_color(RED);
 		else set_color(WHITE);
 		cout << "Назад\n";

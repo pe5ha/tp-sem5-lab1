@@ -1,11 +1,12 @@
-Novelist
-Novelist1
-90
-110
+Fantast
+fantast1
 1;Novella1
-biography
-Poet
-Poet1
-103
-490
+1
+Fantast
+fantast2
 2;Poema1;Poema 2
+0
+Fantast
+fantast3
+2;Poema1;Poema 2
+1

@@ -1,20 +1,12 @@
-Poet
-Semyon
-2002
-2190
-2;2;1Kniga
-Poet
-Pesha
-2002
-2190
-2;2;1Kniga
-Poet
-sasha
-2002
-2190
-2;2;1Kniga
-Poet
-Asha
-2002
-2190
-2;2;1Kniga
+Fantast
+fantast1
+1;Novella1
+1
+Fantast
+fantast2
+2;Poema1;Poema 2
+0
+Fantast
+fantast3
+2;Poema1;Poema 2
+1

@@ -18,11 +18,24 @@ namespace Menu {
 	void add_a_poet();
 	void delete_a_poet();
 
+	void add_a_novelist();
+	void delete_a_novelist();
+
+	void add_a_fantast();
+	void delete_a_fantast();
+
 	//добавление и удаление книг
 	void add_or_delete_book();
 	void menu_add_book(short);
+
 	void add_book_poet();
 	void delete_book_poet();
+
+	void add_book_novelist();
+	void delete_book_novelist();
+
+	void add_book_fantast();
+	void delete_book_fantast();
 
 	//вывод писателя
 	void print_writter();
@@ -33,5 +46,9 @@ namespace Menu {
 	void menu_change_data(short);
 	void change_p(Poet);
 	void menu_change_p(short);
-	
+	void change_n(Novelist);
+	void menu_change_n(short);
+	void change_f(Fantast);
+	void menu_change_f(short);
+
 }

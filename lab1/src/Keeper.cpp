@@ -317,7 +317,7 @@ void keeper::print_fantast(int id)
 			cout << f[id].get_name_books()[i] << endl;
 		}
 	}
-	f[id].isFilmed ? cout << "Снят по крайней мере 1 фильм" : cout << "Не снимались фильмы";
+	f[id].get_isFilmed() ? cout << "Снят по крайней мере 1 фильм" : cout << "Не снимались фильмы";
 }
 
 void keeper::print_all()

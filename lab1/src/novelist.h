@@ -1,16 +1,18 @@
 #include "Writter.h"
 class Novelist : public Writter
 {
-public:
-	Novelist();
-	Novelist(string fullname, int year_of_birth, int year_of_death , string *name_books, int nob, string biography);// конструктор с парам-ми
-	Novelist(const Novelist &ref_Novelist); // конструктор копирования
-
+private:
 	//годы жизни
 	int year_of_birth;
 	int year_of_death;
 	// краткая биография
 	string biography;
+public:
+	Novelist();
+	Novelist(string fullname, int year_of_birth, int year_of_death , string *name_books, int nob, string biography);// конструктор с парам-ми
+	Novelist(const Novelist &ref_Novelist); // конструктор копирования
+
+	
 	//геттеры
 	string get_fullname() override;
 	int get_years_of_birth();

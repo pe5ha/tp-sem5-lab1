@@ -222,6 +222,17 @@ namespace Menu {
 		getline(cin, fullname);
 		getline(cin, yob);
 		getline(cin, yod);
+		try {
+			for (int i = 0; i < yob.length(); i++) { // идем по символам
+				if (yob[i] >= 'A' && yob[i] <= 'Z' || yob[i] >= 'a' && yob[i] <= 'z'
+					|| yod[i] >= 'A' && yod[i] <= 'Z' || yod[i] >= 'a' && yod[i] <= 'z')
+					throw "Ошибка - в дате рождения есть буквы";
+				break;
+			}
+		}
+		catch (string s) {
+			cout << s << endl;
+		}
 		year_of_birth = stoi(yob);
 		year_of_death = stoi(yod);
 		getline(cin, books[0]);
@@ -243,6 +254,17 @@ namespace Menu {
 		getline(cin, fullname);
 		getline(cin, yob);
 		getline(cin, yod);
+		try {
+			for (int i = 0; i < yob.length(); i++) { // идем по символам
+				if (yob[i] >= 'A' && yob[i] <= 'Z' || yob[i] >= 'a' && yob[i] <= 'z'
+					|| yod[i] >= 'A' && yod[i] <= 'Z' || yod[i] >= 'a' && yod[i] <= 'z')
+					throw "Ошибка - в дате рождения есть буквы";
+				break;
+			}
+		}
+		catch (string s) {
+			cout << s << endl;
+		}
 		year_of_birth = stoi(yob);
 		year_of_death = stoi(yod);
 		getline(cin, books[0]);
@@ -264,7 +286,16 @@ namespace Menu {
 		getline(cin, fullname);
 		getline(cin, books[0]);
 		getline(cin, isFilmed);
-		int IF = stoi(isFilmed);
+		int IF = 0;
+		try {
+			if (isFilmed != "0" && isFilmed != "1") {
+				throw "Ошибка - в isFilmed введено не 0 или 1";
+			}
+		}
+		catch (string s) {
+			cout << s << endl;
+		}
+		IF = stoi(isFilmed);
 		Fantast f(fullname,books, 1, IF);
 		k.add_fantast(f);
 	}

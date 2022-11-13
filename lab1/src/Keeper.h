@@ -42,7 +42,7 @@ public:
 	//template <typename T>
 	//void add(T newT) { if (std::is_same<T, Poet>::value) p[size_p++] = newT; }
 
-	int get_size_p();
+	int get_size();
 
 	Poet get_poet(int id);
 	Novelist get_novelist(int id);

@@ -41,22 +41,6 @@ namespace Menu {
 		if (menu == 7)
 			set_color(RED);
 		else set_color(WHITE);
-		cout << "ненужная строка\n";
-		if (menu == 8)
-			set_color(RED);
-		else set_color(WHITE);
-		cout << "ненужная строка\n";
-		if (menu == 9)
-			set_color(RED);
-		else set_color(WHITE);
-		cout << "ненужная строка\n";
-		if (menu == 10)
-			set_color(RED);
-		else set_color(WHITE);
-		cout << "ненужная строка\n";
-		if (menu == 11)
-			set_color(RED);
-		else set_color(WHITE);
 		cout << "Exit\n" << endl;
 	}
 
@@ -77,13 +61,13 @@ namespace Menu {
 			switch (key) {
 			case 80: //вниз
 				func++;
-				if (func > 11)
+				if (func > 7)
 					func = 1;
 				break;
 			case 72: //вверх
 				func--;
 				if (func < 1)
-					func = 11;
+					func = 7;
 				break;
 			case 13: //enter
 				ENTER_ = true;
@@ -118,14 +102,6 @@ namespace Menu {
 					_getch();
 					break;
 				case 7:
-					break;
-				case 8: //
-					break;
-				case 9: //Save to file
-					break;
-				case 10: //Extract from file
-					break;
-				case 11: //Exit
 					exit = true;
 					break;
 				}
@@ -241,12 +217,24 @@ namespace Menu {
 	void add_a_poet()
 	{
 		string fullname;
-		int year_of_birth, year_of_death;
+		int year_of_birth, year_of_death; string yob, yod;
 		string* books = new string[1];
 		getline(cin, fullname);
-		cin >> year_of_birth;
-		cin >> year_of_death;
-		getline(cin, books[0]);
+		getline(cin, yob);
+		getline(cin, yod);
+		try {
+			for (int i = 0; i < yob.length(); i++) { // идем по символам
+				if (yob[i] >= 'A' && yob[i] <= 'Z' || yob[i] >= 'a' && yob[i] <= 'z'
+					|| yod[i] >= 'A' && yod[i] <= 'Z' || yod[i] >= 'a' && yod[i] <= 'z')
+					throw "Ошибка - в дате рождения есть буквы";
+				break;
+			}
+		}
+		catch (string s) {
+			cout << s << endl;
+		}
+		year_of_birth = stoi(yob);
+		year_of_death = stoi(yod);
 		getline(cin, books[0]);
 		Poet p(fullname, year_of_birth, year_of_death, books, 1);
 		k.add_poet(p);
@@ -260,13 +248,25 @@ namespace Menu {
 	void add_a_novelist()
 	{
 		string fullname;
-		int year_of_birth, year_of_death;
+		int year_of_birth, year_of_death; string yob, yod;
 		string* books = new string[1];
 		string biography;
 		getline(cin, fullname);
-		cin >> year_of_birth;
-		cin >> year_of_death;
-		getline(cin, books[0]);
+		getline(cin, yob);
+		getline(cin, yod);
+		try {
+			for (int i = 0; i < yob.length(); i++) { // идем по символам
+				if (yob[i] >= 'A' && yob[i] <= 'Z' || yob[i] >= 'a' && yob[i] <= 'z'
+					|| yod[i] >= 'A' && yod[i] <= 'Z' || yod[i] >= 'a' && yod[i] <= 'z')
+					throw "Ошибка - в дате рождения есть буквы";
+				break;
+			}
+		}
+		catch (string s) {
+			cout << s << endl;
+		}
+		year_of_birth = stoi(yob);
+		year_of_death = stoi(yod);
 		getline(cin, books[0]);
 		getline(cin, biography);
 		Novelist n(fullname, year_of_birth, year_of_death, books, 1, biography);
@@ -286,7 +286,16 @@ namespace Menu {
 		getline(cin, fullname);
 		getline(cin, books[0]);
 		getline(cin, isFilmed);
-		int IF = stoi(isFilmed);
+		int IF = 0;
+		try {
+			if (isFilmed != "0" && isFilmed != "1") {
+				throw "Ошибка - в isFilmed введено не 0 или 1";
+			}
+		}
+		catch (string s) {
+			cout << s << endl;
+		}
+		IF = stoi(isFilmed);
 		Fantast f(fullname,books, 1, IF);
 		k.add_fantast(f);
 	}
@@ -484,41 +493,41 @@ namespace Menu {
 					cout << "Введите id" << endl;
 					cin >> id;
 					k.print_poet(id);
-					cout << "Нажмите ENTER чтобы продолжить продолжить!" << endl;
+					cout << "\nНажмите ENTER чтобы продолжить продолжить!" << endl;
 					_getch();
 					return;
 				case 2: //Вывести романиста по id
 					cout << "Введите id" << endl;
 					cin >> id;
 					k.print_novelist(id);
-					cout << "Нажмите ENTER чтобы продолжить продолжить!" << endl;
+					cout << "\nНажмите ENTER чтобы продолжить продолжить!" << endl;
 					_getch();
 					break;
 				case 3: //Вывести фантаста по id
 					cout << "Введите id" << endl;
 					cin >> id;
 					k.print_fantast(id);
-					cout << "Нажмите ENTER чтобы продолжить продолжить!" << endl;
+					cout << "\nНажмите ENTER чтобы продолжить продолжить!" << endl;
 					_getch();
 					break;
 				case 4: //Вывести всех поэтов
 					k.print_poet();
-					cout << "Нажмите ENTER чтобы продолжить продолжить!" << endl;
+					cout << "\nНажмите ENTER чтобы продолжить продолжить!" << endl;
 					_getch();
 					return;
 				case 5: //Вывести всех романистов
 					k.print_novelist();
-					cout << "Нажмите ENTER чтобы продолжить продолжить!" << endl;
+					cout << "\nНажмите ENTER чтобы продолжить продолжить!" << endl;
 					_getch();
 					break;
 				case 6: //Вывести всех фантастов
 					k.print_fantast();
-					cout << "Нажмите ENTER чтобы продолжить продолжить!" << endl;
+					cout << "\nНажмите ENTER чтобы продолжить продолжить!" << endl;
 					_getch();
 					break;
 				case 7: //Вывести всех писателей
 					k.print_all();
-					cout << "Нажмите ENTER чтобы продолжить продолжить!" << endl;
+					cout << "\nНажмите ENTER чтобы продолжить продолжить!" << endl;
 					_getch();
 					break;
 				case 8:
@@ -686,7 +695,7 @@ namespace Menu {
 				switch (func) {
 				case 1: //Изменить данные поэта по id
 					cout << "Введите новое ФИО" << endl;
-					cin >> fullname;
+					getline(cin,fullname);
 					poet.set_fullname(fullname);
 					return;
 				case 2: //Изменить данные романиста по id
@@ -703,7 +712,7 @@ namespace Menu {
 					cout << "Введите id книги, которую хотите изменить" << endl;
 					cin >> id;
 					cout << "Введите название нового произведения" << endl;
-					cin >> book;
+					getline(cin,book);
 					poet.set_book(book, id);
 					return;
 				case 5: //Вывести всех поэтов
@@ -781,7 +790,7 @@ namespace Menu {
 				switch (func) {
 				case 1: //Изменить данные поэта по id
 					cout << "Введите новое ФИО" << endl;
-					cin >> fullname;
+					getline(cin, fullname);
 					novelist.set_fullname(fullname);
 					break;
 				case 2: //Изменить данные романиста по id
@@ -798,12 +807,13 @@ namespace Menu {
 					cout << "Введите id книги, которую хотите изменить" << endl;
 					cin >> id;
 					cout << "Введите название нового произведения" << endl;
-					cin >> book;
+					getline(cin,book);
 					novelist.set_book(book, id);
 					break;
 				case 5:
 					cout << "Введите новую биографию для романиста" << endl;
-					cin >> bio;
+					getline(cin, bio);
+					novelist.set_biography(bio);
 					break;
 				case 6:
 					return;
@@ -883,14 +893,14 @@ namespace Menu {
 				switch (func) {
 				case 1: 
 					cout << "Введите новое ФИО" << endl;
-					cin >> fullname;
+					getline(cin, fullname);
 					fantast.set_fullname(fullname);
 					break;
 				case 2: 
 					cout << "Введите id книги, которую хотите изменить" << endl;
 					cin >> id;
 					cout << "Введите название нового произведения" << endl;
-					cin >> book;
+					getline(cin,book);
 					fantast.set_book(book, id);
 					break;
 				case 3: 

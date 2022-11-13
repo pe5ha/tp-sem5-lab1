@@ -7,6 +7,7 @@ Novelist::Novelist()
 	this->year_of_death = NULL;
 	this->name_books = new string[0];
 	this->number_of_books = 0;
+	this->biography = "NULL";
 }
 
 
@@ -27,6 +28,7 @@ Novelist::Novelist(const Novelist& ref_Novelist)
 	year_of_death = ref_Novelist.year_of_death;
 	name_books = ref_Novelist.name_books;
 	number_of_books = ref_Novelist.number_of_books;
+	biography = ref_Novelist.biography;
 }
 
 string Novelist::get_fullname()

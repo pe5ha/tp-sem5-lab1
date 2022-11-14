@@ -236,7 +236,7 @@ void keeper::Read()
 				getline(in, fn);
 				getline(in, new_name_of_book);
 				string* new_books = split(new_name_of_book, ';');
-				int size_books = stoi(new_books[0]);
+				int size_books = new_books->length();
 				bool filmed; in >> filmed; // \n - проверить на перенос строки
 
 				//присваиваем новые значения

@@ -1,15 +1,5 @@
 Poet
 poet 1
-2002
-2018
-1;1
-Novelist
-Novelist 1
-20
-40
-2;Book 1;New roman
-kratk bio
-Fantast
-Fantast fantastovich
-2;fantazy 1;New fantazy kniga!
-1
+200
+300
+1;book 1

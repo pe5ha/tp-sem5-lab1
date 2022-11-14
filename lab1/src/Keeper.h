@@ -23,11 +23,13 @@ private:
 	Fantast* f;
 
 	string* split(string str, char ch);
+	bool have_word(string s);
 public:
 	//конструкторы
 	keeper();
 	keeper(int size_p, int size_n, int size_f ,Poet* p, Novelist* n, Fantast* f);
 	keeper(const keeper&);
+	~keeper();
 
 	void add_poet(Poet new_p);
 	void delete_poet(int id);

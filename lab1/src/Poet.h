@@ -9,8 +9,7 @@ public:
 	Poet();
 	Poet(string fullname, int year_of_birth, int year_of_death , string *name_books, int nob);// конструктор с парам-ми
 	Poet(const Poet &ref_Poet); // конструктор копирования
-
-
+	~Poet();
 
 	//геттеры
 	string get_fullname() override;

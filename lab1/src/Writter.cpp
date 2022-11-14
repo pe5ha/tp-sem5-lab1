@@ -21,6 +21,7 @@ void Writter::delete_book()
 	name_books = new_books;
 }
 
+
 string Writter::get_fullname()
 {
 	return fullname;

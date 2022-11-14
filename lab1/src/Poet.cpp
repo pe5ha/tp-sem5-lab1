@@ -27,6 +27,11 @@ Poet::Poet(const Poet& ref_Poet)
 	number_of_books = ref_Poet.number_of_books;
 }
 
+Poet::~Poet()
+{
+	delete[] name_books;
+}
+
 string Poet::get_fullname()
 {
 	return Writter::get_fullname();

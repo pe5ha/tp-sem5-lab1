@@ -11,7 +11,7 @@ public:
 	Novelist();
 	Novelist(string fullname, int year_of_birth, int year_of_death , string *name_books, int nob, string biography);// конструктор с парам-ми
 	Novelist(const Novelist &ref_Novelist); // конструктор копирования
-
+	~Novelist();
 	
 	//геттеры
 	string get_fullname() override;

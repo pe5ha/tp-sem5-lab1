@@ -24,6 +24,11 @@ Fantast::Fantast(const Fantast& ref_Fantast)
 	isFilmed = ref_Fantast.isFilmed;
 }
 
+Fantast::~Fantast()
+{
+	delete[] name_books;
+}
+
 string Fantast::get_fullname()
 {
 	return Writter::get_fullname();

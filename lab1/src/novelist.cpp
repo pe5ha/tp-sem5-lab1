@@ -31,6 +31,11 @@ Novelist::Novelist(const Novelist& ref_Novelist)
 	biography = ref_Novelist.biography;
 }
 
+Novelist::~Novelist()
+{
+	delete[] name_books;
+}
+
 string Novelist::get_fullname()
 {
 	return Writter::get_fullname();

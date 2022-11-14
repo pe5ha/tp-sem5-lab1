@@ -34,6 +34,13 @@ keeper::keeper(const keeper& ref_k)
 	//TODO: сделать присваивание и для других классов
 }
 
+keeper::~keeper()
+{
+	delete[] p;
+	delete[] n;
+	delete[] f;
+}
+
 int keeper::get_size()
 {
 	return size_p + size_n + size_f;
@@ -202,6 +209,8 @@ void keeper::Read()
 	ifstream in("data.txt");
 	if (in.is_open())
 	{
+		//обновляем keeper.h
+		
 		/*
 		1 строка - получаем символ: 'p' - поэт
 		2 строка - получаем ФИО
@@ -267,13 +276,20 @@ void keeper::print_poet(int id)
 	cout << "ФИО: " << p[id].get_fullname() << endl;
 	cout << "Годы жизни: " << p[id].get_years_of_birth() << " - " << p[id].get_years_of_death() << endl;
 	if (p[id].get_number_of_books() == 0) { cout << "Нету книг" << endl; }
-	else {
+	else if (!have_word(p[0].get_name_books()[0])) {
 		for (int i = 1; i <= p[id].get_number_of_books(); i++) {
 			cout << "Книга " << i << ": ";
 			cout << p[id].get_name_books()[i] << endl;
 		}
 	}
+	else {
+		for (int i = 0; i < p[id].get_number_of_books(); i++) {
+			cout << "Книга " << i + 1 << ": ";
+			cout << p[id].get_name_books()[i] << endl;
+		}
+	}
 }
+
 
 void keeper::print_novelist()
 {
@@ -289,9 +305,15 @@ void keeper::print_novelist(int id)
 	cout << "ФИО: " << n[id].get_fullname() << endl;
 	cout << "Годы жизни: " << n[id].get_years_of_birth() << " - " << n[id].get_years_of_death() << endl;
 	if (n[id].get_number_of_books() == 0) { cout << "Нету книг" << endl; }
-	else {
+	else if (!have_word(n[0].get_name_books()[0])) {
 		for (int i = 1; i <= n[id].get_number_of_books(); i++) {
 			cout << "Книга " << i << ": ";
+			cout << n[id].get_name_books()[i] << endl;
+		}
+	}
+	else {
+		for (int i = 0; i < n[id].get_number_of_books(); i++) {
+			cout << "Книга " << i + 1 << ": ";
 			cout << n[id].get_name_books()[i] << endl;
 		}
 	}
@@ -311,9 +333,15 @@ void keeper::print_fantast(int id)
 	if (id >= size_f) { return; }
 	cout << "ФИО: " << f[id].get_fullname() << endl;
 	if (f[id].get_number_of_books() == 0) { cout << "Нету книг" << endl; }
-	else {
+	else if (!have_word(p[0].get_name_books()[0])) {
 		for (int i = 1; i <= f[id].get_number_of_books(); i++) {
 			cout << "Книга " << i << ": ";
+			cout << f[id].get_name_books()[i] << endl;
+		}
+	}
+	else {
+		for (int i = 0; i < f[id].get_number_of_books(); i++) {
+			cout << "Книга " << i + 1 << ": ";
 			cout << f[id].get_name_books()[i] << endl;
 		}
 	}
@@ -386,5 +414,14 @@ string* keeper::split(string str, char ch)
 	}
 	stream.flush();
 	return s;
+}
+
+bool keeper::have_word(string s)
+{
+	for (int i = 0; i < s.length(); i++) { // идем по символам
+		if (s[i] >= 'A' && s[i] <= 'Z' || s[i] >= 'a' && s[i] <= 'z')
+			return true;
+	}
+	return false;
 }
 

@@ -1,5 +1,5 @@
-#include "Writter.h"
-class Novelist : public Writter
+#include "Writer.h"
+class Novelist : public Writer
 {
 private:
 	//годы жизни

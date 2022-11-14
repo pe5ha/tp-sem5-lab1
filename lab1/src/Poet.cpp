@@ -29,7 +29,7 @@ Poet::Poet(const Poet& ref_Poet)
 
 string Poet::get_fullname()
 {
-	return Writter::get_fullname();
+	return Writer::get_fullname();
 }
 
 int Poet::get_years_of_birth()
@@ -44,12 +44,12 @@ int Poet::get_years_of_death()
 
 string* Poet::get_name_books()
 {
-	return Writter::get_name_books();
+	return Writer::get_name_books();
 }
 
 void Poet::set_fullname(string fullname)
 {
-	Writter::set_fullname(fullname);
+	Writer::set_fullname(fullname);
 }
 
 void Poet::set_years_of_birth(int year_of_birth)
@@ -64,31 +64,31 @@ void Poet::set_years_of_death(int year_of_death)
 
 void Poet::set_name_books(string* name_books)
 {
-	Writter::set_name_books(name_books);
+	Writer::set_name_books(name_books);
 }
 
 void Poet::set_number_of_books(int new_nob)
 {
-	Writter::set_number_of_books(new_nob);
+	Writer::set_number_of_books(new_nob);
 }
 
 void Poet::set_book(string book, int old_book_id)
 {
-	Writter::set_book(book, old_book_id);
+	Writer::set_book(book, old_book_id);
 }
 
 void Poet::add_book(string new_book)
 {
-	Writter::add_book(new_book);
+	Writer::add_book(new_book);
 }
 
 void Poet::delete_book()
 {
-	Writter::delete_book();
+	Writer::delete_book();
 }
 
 int Poet::get_number_of_books()
 {
-	return Writter::get_number_of_books();
+	return Writer::get_number_of_books();
 }
 

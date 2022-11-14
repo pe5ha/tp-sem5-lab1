@@ -48,7 +48,7 @@ namespace Menu {
 	void menu_change_p(short);
 	void change_n(Novelist);
 	void menu_change_n(short);
-	void change_f(Fantast);
+	void change_f(Fantasist);
 	void menu_change_f(short);
 
 }

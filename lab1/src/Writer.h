@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class Writter
+class Writer
 {
 protected:
 	string fullname;
@@ -14,7 +14,7 @@ protected:
 	virtual void add_book(string) = 0;
 	virtual void delete_book() = 0;
 public:
-	//~Writter(); TODO: - сделать деструктор
+	//~Writer(); TODO: - сделать деструктор
 
 	virtual string get_fullname() = 0;
 	virtual string* get_name_books() = 0;

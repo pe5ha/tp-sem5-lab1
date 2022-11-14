@@ -10,10 +10,10 @@ keeper::keeper()
 	this->size_f = 0;
 	p = new Poet[1];
 	n = new Novelist[1];
-	f = new Fantast[1];
+	f = new Fantasist[1];
 }
 
-keeper::keeper(int size_p, int size_n, int size_f, Poet* p, Novelist* n, Fantast* f)
+keeper::keeper(int size_p, int size_n, int size_f, Poet* p, Novelist* n, Fantasist* f)
 {
 	this->size_p = size_p;
 	this->size_n = size_n;
@@ -91,10 +91,10 @@ void keeper::delete_novelist(int id)
 	size_n--;
 }
 
-void keeper::add_fantast(Fantast new_f)
+void keeper::add_fantast(Fantasist new_f)
 {
 	size_f++;
-	Fantast* new_fantast = new Fantast[size_f];
+	Fantasist* new_fantast = new Fantasist[size_f];
 	for (int i = 0; i < size_f - 1; i++) {
 		new_fantast[i] = f[i];
 	}
@@ -105,7 +105,7 @@ void keeper::add_fantast(Fantast new_f)
 void keeper::delete_fantast(int id)
 {
 	if (size_f <= 0) exception;
-	Fantast* new_fantast = new Fantast[size_f - 1];
+	Fantasist* new_fantast = new Fantasist[size_f - 1];
 	int k = 0;
 	for (int i = 0; i < size_f; i++) {
 		if (i == id) continue;
@@ -129,7 +129,7 @@ Novelist keeper::get_novelist(int id)
 	return n[id];
 }
 
-Fantast keeper::get_fantast(int id)
+Fantasist keeper::get_fantast(int id)
 {
 	if (id >= size_f) { cout << "замени на эксепшен!" << endl; return f[0]; }//TODO: замени на эксепшен! 
 	return f[id];
@@ -180,7 +180,7 @@ void keeper::Save()
 		for (int i = 0; i < size_f; i++) {
 			if (firstIteration == true) firstIteration = false;
 			else out << "\n";
-			out << "Fantast" << endl;
+			out << "Fantasist" << endl;
 			out << f[i].get_fullname() << endl;
 			//записываем количество книг
 			out << f[i].get_number_of_books();
@@ -237,7 +237,7 @@ void keeper::Read()
 				Novelist new_n(fn, yob, yod, new_books, size_books, bio);//исправить последний параметр
 				add_novelist(new_n);
 			}
-			else if (c == "Fantast") {
+			else if (c == "Fantasist") {
 				getline(in, fn);
 				getline(in, new_name_of_book);
 				string* new_books = split(new_name_of_book, ';');
@@ -245,7 +245,7 @@ void keeper::Read()
 				bool isFilmed; in >> isFilmed; // \n - проверить на перенос строки
 
 				//присваиваем новые значения
-				Fantast new_f(fn, new_books, size_books, isFilmed);
+				Fantasist new_f(fn, new_books, size_books, isFilmed);
 				add_fantast(new_f);
 			}
 		}

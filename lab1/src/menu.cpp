@@ -1,5 +1,5 @@
 #pragma once
-#include "menu.h"
+#include "Menu.h"
 namespace Menu {
 	keeper k;
 	bool isRead = false;
@@ -296,7 +296,7 @@ namespace Menu {
 			cout << s << endl;
 		}
 		IF = stoi(isFilmed);
-		Fantast f(fullname,books, 1, IF);
+		Fantasist f(fullname,books, 1, IF);
 		k.add_fantast(f);
 	}
 	void delete_a_fantast()
@@ -853,7 +853,7 @@ namespace Menu {
 		else set_color(WHITE);
 		cout << "Назад\n";
 	}
-	void change_f(Fantast fantast)
+	void change_f(Fantasist fantast)
 	{
 		char key_tmp; //временный символ
 		char key; //опция

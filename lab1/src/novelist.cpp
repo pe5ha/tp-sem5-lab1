@@ -1,4 +1,4 @@
-#include "novelist.h"
+#include "Novelist.h"
 
 Novelist::Novelist()
 {
@@ -33,7 +33,7 @@ Novelist::Novelist(const Novelist& ref_Novelist)
 
 string Novelist::get_fullname()
 {
-	return Writter::get_fullname();
+	return Writer::get_fullname();
 }
 
 int Novelist::get_years_of_birth()
@@ -53,12 +53,12 @@ string Novelist::get_biography()
 
 string* Novelist::get_name_books()
 {
-	return Writter::get_name_books();
+	return Writer::get_name_books();
 }
 
 void Novelist::set_fullname(string fullname)
 {
-	Writter::set_fullname(fullname);
+	Writer::set_fullname(fullname);
 }
 
 void Novelist::set_years_of_birth(int year_of_birth)
@@ -73,17 +73,17 @@ void Novelist::set_years_of_death(int year_of_death)
 
 void Novelist::set_name_books(string* name_books)
 {
-	Writter::set_name_books(name_books);
+	Writer::set_name_books(name_books);
 }
 
 void Novelist::set_number_of_books(int new_nob)
 {
-	Writter::set_number_of_books(new_nob);
+	Writer::set_number_of_books(new_nob);
 }
 
 void Novelist::set_book(string book, int old_book_id)
 {
-	Writter::set_book(book, old_book_id);
+	Writer::set_book(book, old_book_id);
 }
 
 void Novelist::set_biography(string biography)
@@ -93,16 +93,16 @@ void Novelist::set_biography(string biography)
 
 void Novelist::add_book(string new_book)
 {
-	Writter::add_book(new_book);
+	Writer::add_book(new_book);
 }
 
 void Novelist::delete_book()
 {
-	Writter::delete_book();
+	Writer::delete_book();
 }
 
 int Novelist::get_number_of_books()
 {
-	return Writter::get_number_of_books();
+	return Writer::get_number_of_books();
 }
 

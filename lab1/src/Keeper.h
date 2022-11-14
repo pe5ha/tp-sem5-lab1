@@ -1,16 +1,9 @@
 ﻿#include <iostream>
 #include <fstream>
-#include "Poet.h"
-#include "novelist.h"
-#include "fantast.h"
 #include <sstream>    
-
-/*Разработать класс Keeper, который реализует контейнер для хранения и обработки
-объектов. Класс Keeper должен обеспечивать следующие функции:
-▪ добавление и удаление производных объектов абстрактного класса Writter
-▪ полное сохранение себя в файле;
-▪ полное восстановление себя из файла.
-*/
+#include "Poet.h"
+#include "Novelist.h"
+#include "Fantasist.h"
 
 class keeper
 {
@@ -20,13 +13,13 @@ private:
 	int size_f;
 	Poet* p;
 	Novelist* n;
-	Fantast* f;
+	Fantasist* f;
 
 	string* split(string str, char ch);
 public:
 	//конструкторы
 	keeper();
-	keeper(int size_p, int size_n, int size_f ,Poet* p, Novelist* n, Fantast* f);
+	keeper(int size_p, int size_n, int size_f ,Poet* p, Novelist* n, Fantasist* f);
 	keeper(const keeper&);
 
 	void add_poet(Poet new_p);
@@ -35,7 +28,7 @@ public:
 	void add_novelist(Novelist new_n);
 	void delete_novelist(int id);
 
-	void add_fantast(Fantast new_f);
+	void add_fantast(Fantasist new_f);
 	void delete_fantast(int id);
 
 
@@ -46,7 +39,7 @@ public:
 
 	Poet get_poet(int id);
 	Novelist get_novelist(int id);
-	Fantast get_fantast(int id);
+	Fantasist get_fantast(int id);
 	//вывод 
 	void print_poet();// все поэты
 	void print_poet(int id); // поэты по id

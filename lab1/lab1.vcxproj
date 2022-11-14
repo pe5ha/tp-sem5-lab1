@@ -139,21 +139,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\fantast.cpp" />
+    <ClCompile Include="src\Fantasist.cpp" />
     <ClCompile Include="src\Keeper.cpp" />
-    <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\menu.cpp" />
-    <ClCompile Include="src\novelist.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Menu.cpp" />
+    <ClCompile Include="src\Novelist.cpp" />
     <ClCompile Include="src\Poet.cpp" />
-    <ClCompile Include="src\Writter.cpp" />
+    <ClCompile Include="src\Writer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\fantast.h" />
+    <ClInclude Include="src\Fantasist.h" />
     <ClInclude Include="src\Keeper.h" />
-    <ClInclude Include="src\menu.h" />
-    <ClInclude Include="src\novelist.h" />
+    <ClInclude Include="src\Menu.h" />
+    <ClInclude Include="src\Novelist.h" />
     <ClInclude Include="src\Poet.h" />
-    <ClInclude Include="src\Writter.h" />
+    <ClInclude Include="src\Writer.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="data.txt" />

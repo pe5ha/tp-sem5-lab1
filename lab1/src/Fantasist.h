@@ -1,12 +1,12 @@
-#include "Writter.h"
-class Fantast : public Writter
+#include "Writer.h"
+class Fantasist : public Writer
 {
 private:
 	bool isFilmed;
 public:
-	Fantast();
-	Fantast(string fullname, string *name_books, int nob, bool isFilmed);// конструктор с парам-ми
-	Fantast(const Fantast &ref_Fantast); // конструктор копирования
+	Fantasist();
+	Fantasist(string fullname, string *name_books, int nob, bool isFilmed);// конструктор с парам-ми
+	Fantasist(const Fantasist &ref_Fantast); // конструктор копирования
 
 	//геттеры
 	string get_fullname() override;

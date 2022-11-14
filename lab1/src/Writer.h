@@ -15,6 +15,7 @@ protected:
 	virtual void delete_book() = 0;
 public:
 	//~Writer(); TODO: - сделать деструктор
+	//virtual ~Writer() {};
 
 	virtual string get_fullname() = 0;
 	virtual string* get_books() = 0;

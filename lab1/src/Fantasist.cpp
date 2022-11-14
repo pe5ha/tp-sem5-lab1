@@ -8,11 +8,11 @@ Fantasist::Fantasist()
 	this->filmed = NULL;
 }
 
-Fantasist::Fantasist(string fullname, string* books, int nob, bool filmed)
+Fantasist::Fantasist(string fullname, string* books, int num, bool filmed)
 {
 	this->fullname = fullname;
 	this->books = books;
-	this->number_of_books = nob;
+	this->number_of_books = num;
 	this->filmed = filmed;
 }
 

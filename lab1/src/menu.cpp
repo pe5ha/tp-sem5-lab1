@@ -282,20 +282,20 @@ namespace Menu {
 	{
 		string fullname;
 		string* books = new string[1];
-		string isFilmed;
+		string filmed;
 		getline(cin, fullname);
 		getline(cin, books[0]);
-		getline(cin, isFilmed);
+		getline(cin, filmed);
 		int IF = 0;
 		try {
-			if (isFilmed != "0" && isFilmed != "1") {
-				throw "Ошибка - в isFilmed введено не 0 или 1";
+			if (filmed != "0" && filmed != "1") {
+				throw "Ошибка - в filmed введено не 0 или 1";
 			}
 		}
 		catch (string s) {
 			cout << s << endl;
 		}
-		IF = stoi(isFilmed);
+		IF = stoi(filmed);
 		Fantasist f(fullname,books, 1, IF);
 		k.add_fantast(f);
 	}
@@ -865,7 +865,7 @@ namespace Menu {
 		int year_of_death;
 		string book;
 		int id;
-		int isFilmed;
+		int filmed;
 		menu_change_f(func);
 
 		while (1) {
@@ -905,8 +905,8 @@ namespace Menu {
 					break;
 				case 3: 
 					cout << "Введите 1 если фильм снят, если не снят - введите 0";
-					cin >> isFilmed;
-					fantast.set_isFilmed(isFilmed);
+					cin >> filmed;
+					fantast.set_filmed(filmed);
 					break;
 				case 4:
 					return;

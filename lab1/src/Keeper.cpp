@@ -157,7 +157,7 @@ void keeper::Save()
 			//записываем количество книг
 			out << p[i].get_number_of_books();
 			for (int j = 0; j < p[i].get_number_of_books(); j++) {
-				out << ";" << p[i].get_name_books()[j];
+				out << ";" << p[i].get_books()[j];
 			}
 		}
 		//записываем новелистов
@@ -172,7 +172,7 @@ void keeper::Save()
 			//записываем количество книг
 			out << n[i].get_number_of_books();
 			for (int j = 0; j < n[i].get_number_of_books(); j++) {
-				out << ";" << n[i].get_name_books()[j];
+				out << ";" << n[i].get_books()[j];
 			}
 			out << '\n' << n[i].get_biography();
 		}
@@ -185,9 +185,9 @@ void keeper::Save()
 			//записываем количество книг
 			out << f[i].get_number_of_books();
 			for (int j = 0; j < f[i].get_number_of_books(); j++) {
-				out << ";" << f[i].get_name_books()[j];
+				out << ";" << f[i].get_books()[j];
 			}
-			out << '\n' << f[i].get_isFilmed();
+			out << '\n' << f[i].is_filmed();
 		}
 	}
 	out.close();
@@ -242,10 +242,10 @@ void keeper::Read()
 				getline(in, new_name_of_book);
 				string* new_books = split(new_name_of_book, ';');
 				int size_books = stoi(new_books[0]);
-				bool isFilmed; in >> isFilmed; // \n - проверить на перенос строки
+				bool filmed; in >> filmed; // \n - проверить на перенос строки
 
 				//присваиваем новые значения
-				Fantasist new_f(fn, new_books, size_books, isFilmed);
+				Fantasist new_f(fn, new_books, size_books, filmed);
 				add_fantast(new_f);
 			}
 		}
@@ -270,7 +270,7 @@ void keeper::print_poet(int id)
 	else {
 		for (int i = 1; i <= p[id].get_number_of_books(); i++) {
 			cout << "Книга " << i << ": ";
-			cout << p[id].get_name_books()[i] << endl;
+			cout << p[id].get_books()[i] << endl;
 		}
 	}
 }
@@ -292,7 +292,7 @@ void keeper::print_novelist(int id)
 	else {
 		for (int i = 1; i <= n[id].get_number_of_books(); i++) {
 			cout << "Книга " << i << ": ";
-			cout << n[id].get_name_books()[i] << endl;
+			cout << n[id].get_books()[i] << endl;
 		}
 	}
 	cout << "Краткая биография: " << n[id].get_biography() << endl;
@@ -314,10 +314,10 @@ void keeper::print_fantast(int id)
 	else {
 		for (int i = 1; i <= f[id].get_number_of_books(); i++) {
 			cout << "Книга " << i << ": ";
-			cout << f[id].get_name_books()[i] << endl;
+			cout << f[id].get_books()[i] << endl;
 		}
 	}
-	f[id].get_isFilmed() ? cout << "Снят по крайней мере 1 фильм" : cout << "Не снимались фильмы";
+	f[id].is_filmed() ? cout << "Снят по крайней мере 1 фильм" : cout << "Не снимались фильмы";
 }
 
 void keeper::print_all()

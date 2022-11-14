@@ -1,8 +1,5 @@
 #include "Keeper.h"
 
-
-
-
 keeper::keeper()
 {
 	this->size_p = 0;
@@ -134,8 +131,6 @@ Fantasist keeper::get_fantast(int id)
 	if (id >= size_f) { cout << "замени на эксепшен!" << endl; return f[0]; }//TODO: замени на эксепшен! 
 	return f[id];
 }
-
-
 
 void keeper::Save()
 {

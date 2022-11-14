@@ -10,7 +10,6 @@ Novelist::Novelist()
 	this->biography = "NULL";
 }
 
-
 Novelist::Novelist(string fullname, int year_of_birth, int year_of_death, string *books, int nob, string biography)
 {
 	this->fullname = fullname;

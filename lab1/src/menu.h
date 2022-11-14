@@ -15,6 +15,7 @@ namespace Menu {
 	//добавление и удаление писателей
 	void add_or_delete_a_writter();
 	void menu_add_or_delete_a_writter(short);
+
 	void add_a_poet();
 	void delete_a_poet();
 
@@ -50,5 +51,4 @@ namespace Menu {
 	void menu_change_n(short);
 	void change_f(Fantasist);
 	void menu_change_f(short);
-
 }

@@ -7,10 +7,8 @@ private:
 	int year_of_death;
 public:
 	Poet();
-	Poet(string fullname, int year_of_birth, int year_of_death , string *books, int nob);// конструктор с парам-ми
-	Poet(const Poet &ref_Poet); // конструктор копирования
-
-
+	Poet(string fullname, int year_of_birth, int year_of_death , string *books, int nob); //конструктор с параметрами
+	Poet(const Poet &ref_Poet); //конструктор копирования
 
 	//геттеры
 	string get_fullname() override;
@@ -25,7 +23,6 @@ public:
 	void set_years_of_death(int year_of_death);
 	void set_books(string* books)override;
 	void set_number_of_books(int new_nob)override;
-
 	void set_book(string, int old_book_id)override;
 
 	//изменение данных

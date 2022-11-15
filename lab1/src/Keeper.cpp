@@ -39,6 +39,7 @@ keeper::~keeper()
 	delete[] p;
 	delete[] n;
 	delete[] f;
+	cout << "Вызван деструктор ~Novelist" << endl;
 }
 
 int keeper::get_size()
@@ -46,15 +47,19 @@ int keeper::get_size()
 	return size_p + size_n + size_f;
 }
 
-void keeper::add_poet(Poet new_p)
+void keeper::add_poet(string fullname,int year_of_birth,int year_of_death, string* books, int size_b)
 {
 	size_p++;
-	Poet* new_poets = new Poet[size_p];
+	Poet* new_poets = new Poet[size_p]; 
 	for (int i = 0; i < size_p - 1; i++) {
 		new_poets[i] = p[i];
 	}
-	new_poets[size_p - 1] = new_p; // проверить
-	p = new_poets;
+	new_poets[size_p - 1].set_fullname(fullname);
+	new_poets[size_p - 1].set_years_of_birth(year_of_birth);
+	new_poets[size_p - 1].set_years_of_death(year_of_death);
+	new_poets[size_p - 1].set_name_books(books);
+	new_poets[size_p - 1].set_number_of_books(size_b);
+	p = new_poets; 
 }
 
 void keeper::delete_poet(int id)
@@ -72,14 +77,18 @@ void keeper::delete_poet(int id)
 	size_p--;
 }
 
-void keeper::add_novelist(Novelist new_n)
+void keeper::add_novelist(string fullname, int year_of_birth, int year_of_death, string* books, int size_b, string biography)
 {
 	size_n++;
 	Novelist* new_novelists = new Novelist[size_n];
 	for (int i = 0; i < size_n - 1; i++) {
 		new_novelists[i] = n[i];
 	}
-	new_novelists[size_n - 1] = new_n;
+	new_novelists[size_p - 1].set_fullname(fullname);
+	new_novelists[size_p - 1].set_years_of_birth(year_of_birth);
+	new_novelists[size_p - 1].set_years_of_death(year_of_death);
+	new_novelists[size_p - 1].set_name_books(books);
+	new_novelists[size_p - 1].set_number_of_books(size_b);
 	n = new_novelists;
 }
 
@@ -98,14 +107,17 @@ void keeper::delete_novelist(int id)
 	size_n--;
 }
 
-void keeper::add_fantast(Fantast new_f)
+void keeper::add_fantast(string fullname,string* books, int size_b,bool IF)
 {
 	size_f++;
 	Fantast* new_fantast = new Fantast[size_f];
 	for (int i = 0; i < size_f - 1; i++) {
 		new_fantast[i] = f[i];
 	}
-	new_fantast[size_f - 1] = new_f;
+	new_fantast[size_f - 1].set_fullname(fullname);
+	new_fantast[size_f - 1].set_name_books(books);
+	new_fantast[size_f - 1].set_number_of_books(size_b);
+	new_fantast[size_f - 1].set_isFilmed(IF);
 	f = new_fantast;
 }
 
@@ -230,8 +242,8 @@ void keeper::Read()
 				string* new_books = split(new_name_of_book, ';');
 				int size_books = stoi(new_books[0]);
 				//присваиваем новые значения
-				Poet new_p(fn, yob, yod, new_books, size_books);//исправить последний параметр
-				add_poet(new_p);
+				//Poet new_p();//исправить последний параметр
+				add_poet(fn, yob, yod, new_books, size_books);
 			}
 			else if (c == "Novelist") {
 				getline(in, fn);
@@ -243,8 +255,7 @@ void keeper::Read()
 				int size_books = stoi(new_books[0]);
 				string bio; getline(in, bio);
 				//присваиваем новые значения
-				Novelist new_n(fn, yob, yod, new_books, size_books, bio);//исправить последний параметр
-				add_novelist(new_n);
+				add_novelist(fn, yob, yod, new_books, size_books, bio);
 			}
 			else if (c == "Fantast") {
 				getline(in, fn);
@@ -254,8 +265,7 @@ void keeper::Read()
 				bool isFilmed; in >> isFilmed; // \n - проверить на перенос строки
 
 				//присваиваем новые значения
-				Fantast new_f(fn, new_books, size_books, isFilmed);
-				add_fantast(new_f);
+				add_fantast(fn, new_books, size_books, isFilmed);
 			}
 		}
 	}

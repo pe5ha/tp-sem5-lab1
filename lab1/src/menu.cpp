@@ -236,9 +236,9 @@ namespace Menu {
 		year_of_birth = stoi(yob);
 		year_of_death = stoi(yod);
 		getline(cin, books[0]);
-		Poet p(fullname, year_of_birth, year_of_death, books, 1);
-		k.add_poet(p);
-	}
+		k.add_poet(fullname, year_of_birth, year_of_death, books, 1);
+	} 
+	
 	void delete_a_poet()
 	{
 		int id;
@@ -269,8 +269,7 @@ namespace Menu {
 		year_of_death = stoi(yod);
 		getline(cin, books[0]);
 		getline(cin, biography);
-		Novelist n(fullname, year_of_birth, year_of_death, books, 1, biography);
-		k.add_novelist(n);
+		k.add_novelist(fullname, year_of_birth, year_of_death, books, 1, biography);
 	}
 	void delete_a_novelist()
 	{
@@ -296,8 +295,7 @@ namespace Menu {
 			cout << s << endl;
 		}
 		IF = stoi(isFilmed);
-		Fantast f(fullname,books, 1, IF);
-		k.add_fantast(f);
+		k.add_fantast(fullname, books, 1, IF);
 	}
 	void delete_a_fantast()
 	{
@@ -611,19 +609,19 @@ namespace Menu {
 			if (ENTER_) { //запуск функций
 				switch (func) {
 				case 1: //Изменить данные поэта по id
-					cout << "Введите id" << endl;
+					cout << "Введите id поэта" << endl;
 					cin >> id;
-					change_p(k.get_poet(id));
-					return;
+					change_p(id);
+					break;
 				case 2: //Изменить данные романиста по id
 					cout << "Введите id" << endl;
 					cin >> id;
-					change_n(k.get_novelist(id));
+					change_n(id);
 					break;
 				case 3: //Изменить данные фантаста по id
 					cout << "Введите id" << endl;
 					cin >> id;
-					change_f(k.get_fantast(id));
+					change_f(id);
 					break;
 				case 4: //Вывести всех поэтов
 					return;
@@ -656,7 +654,7 @@ namespace Menu {
 		else set_color(WHITE);
 		cout << "Назад\n";
 	}
-	void change_p(Poet poet)
+	void change_p(int id)
 	{
 		char key_tmp; //временный символ
 		char key; //опция
@@ -667,7 +665,6 @@ namespace Menu {
 		int year_of_birth;
 		int year_of_death;
 		string book;
-		int id;
 		menu_change_p(func);
 
 		while (1) {
@@ -696,24 +693,33 @@ namespace Menu {
 				case 1: //Изменить данные поэта по id
 					cout << "Введите новое ФИО" << endl;
 					getline(cin,fullname);
-					poet.set_fullname(fullname);
-					return;
+					getline(cin,fullname);
+					k.get_poet(id).set_fullname(fullname);
+					cout << "Данные изменены" << endl;
+					_getch();
+					break;
 				case 2: //Изменить данные романиста по id
 					cout << "Введите новую дату рождения" << endl;
 					cin >> year_of_birth;
-					poet.set_years_of_birth(year_of_birth);
+					k.get_poet(id).set_years_of_birth(year_of_birth);
+					cout << "Данные изменены" << endl;
+					_getch();
 					break;
 				case 3: //Изменить данные фантаста по id
 					cout << "Введите новую дату смерти" << endl;
 					cin >> year_of_death;
-					poet.set_years_of_death(year_of_death);
+					k.get_poet(id).set_years_of_death(year_of_death);
+					cout << "Данные изменены" << endl;
+					_getch();
 					break;
 				case 4:
 					cout << "Введите id книги, которую хотите изменить" << endl;
 					cin >> id;
 					cout << "Введите название нового произведения" << endl;
 					getline(cin,book);
-					poet.set_book(book, id);
+					k.get_poet(id).set_book(book, id);
+					cout << "Данные изменены" << endl;
+					_getch();
 					return;
 				case 5: //Вывести всех поэтов
 					return;
@@ -750,7 +756,7 @@ namespace Menu {
 		cout << "Назад\n";
 
 	}
-	void change_n(Novelist novelist)
+	void change_n(int id)
 	{
 		char key_tmp; //временный символ
 		char key; //опция
@@ -761,7 +767,7 @@ namespace Menu {
 		int year_of_birth;
 		int year_of_death;
 		string book;
-		int id;
+		int id_book;
 		string bio;
 		menu_change_n(func);
 
@@ -791,29 +797,29 @@ namespace Menu {
 				case 1: //Изменить данные поэта по id
 					cout << "Введите новое ФИО" << endl;
 					getline(cin, fullname);
-					novelist.set_fullname(fullname);
+					k.get_novelist(id).set_fullname(fullname);
 					break;
 				case 2: //Изменить данные романиста по id
 					cout << "Введите новую дату рождения" << endl;
 					cin >> year_of_birth;
-					novelist.set_years_of_birth(year_of_birth);
+					k.get_novelist(id).set_years_of_birth(year_of_birth);
 					break;
 				case 3: //Изменить данные фантаста по id
 					cout << "Введите новую дату смерти" << endl;
 					cin >> year_of_death;
-					novelist.set_years_of_death(year_of_death);
+					k.get_novelist(id).set_years_of_death(year_of_death);
 					break;
 				case 4:
 					cout << "Введите id книги, которую хотите изменить" << endl;
-					cin >> id;
+					cin >> id_book;
 					cout << "Введите название нового произведения" << endl;
 					getline(cin,book);
-					novelist.set_book(book, id);
+					k.get_novelist(id).set_book(book, id_book);
 					break;
 				case 5:
 					cout << "Введите новую биографию для романиста" << endl;
 					getline(cin, bio);
-					novelist.set_biography(bio);
+					k.get_novelist(id).set_biography(bio);
 					break;
 				case 6:
 					return;
@@ -853,7 +859,7 @@ namespace Menu {
 		else set_color(WHITE);
 		cout << "Назад\n";
 	}
-	void change_f(Fantast fantast)
+	void change_f(int id)
 	{
 		char key_tmp; //временный символ
 		char key; //опция
@@ -864,7 +870,7 @@ namespace Menu {
 		int year_of_birth;
 		int year_of_death;
 		string book;
-		int id;
+		int id_book;
 		int isFilmed;
 		menu_change_f(func);
 
@@ -894,19 +900,19 @@ namespace Menu {
 				case 1: 
 					cout << "Введите новое ФИО" << endl;
 					getline(cin, fullname);
-					fantast.set_fullname(fullname);
+					k.get_fantast(id).set_fullname(fullname);
 					break;
 				case 2: 
 					cout << "Введите id книги, которую хотите изменить" << endl;
-					cin >> id;
+					cin >> id_book;
 					cout << "Введите название нового произведения" << endl;
 					getline(cin,book);
-					fantast.set_book(book, id);
+					k.get_fantast(id).set_book(book, id_book);
 					break;
 				case 3: 
 					cout << "Введите 1 если фильм снят, если не снят - введите 0";
 					cin >> isFilmed;
-					fantast.set_isFilmed(isFilmed);
+					k.get_fantast(id).set_isFilmed(isFilmed);
 					break;
 				case 4:
 					return;

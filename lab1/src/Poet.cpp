@@ -30,6 +30,7 @@ Poet::Poet(const Poet& ref_Poet)
 Poet::~Poet()
 {
 	delete[] name_books;
+	cout << "Вызван деструктор ~Poet" << endl;
 }
 
 string Poet::get_fullname()

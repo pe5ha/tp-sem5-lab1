@@ -27,4 +27,5 @@ int main()
 {
     setlocale(LC_ALL, "rus"); // корректное отображение Кириллицы
     menu();
+    return 0;
 }

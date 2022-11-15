@@ -31,13 +31,14 @@ public:
 	keeper(const keeper&);
 	~keeper();
 
-	void add_poet(Poet new_p);
+	//void add_poet(const Poet &new_p);
+	void add_poet(string fullname, int year_of_birth, int year_of_death, string* books, int size_b);
 	void delete_poet(int id);
 
-	void add_novelist(Novelist new_n);
+	void add_novelist(string fullname, int year_of_birth, int year_of_death, string* books, int size_b,string biography);
 	void delete_novelist(int id);
 
-	void add_fantast(Fantast new_f);
+	void add_fantast(string fullname, string* books, int size_b, bool IF);
 	void delete_fantast(int id);
 
 

@@ -44,11 +44,11 @@ namespace Menu {
 	//изменение данных
 	void change_data();
 	void menu_change_data(short);
-	void change_p(Poet);
+	void change_p(int id);
 	void menu_change_p(short);
-	void change_n(Novelist);
+	void change_n(int id);
 	void menu_change_n(short);
-	void change_f(Fantast);
+	void change_f(int id);
 	void menu_change_f(short);
 
 }

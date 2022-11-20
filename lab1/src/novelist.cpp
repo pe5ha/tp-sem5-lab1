@@ -30,6 +30,12 @@ Novelist::Novelist(const Novelist& ref_Novelist)
 	biography = ref_Novelist.biography;
 }
 
+Novelist::~Novelist()
+{
+	delete[] books;
+	cout << "Вызван деструктор ~Novelist" << endl;
+}
+
 string Novelist::get_fullname()
 {
 	return Writer::get_fullname();
@@ -104,4 +110,3 @@ int Novelist::get_number_of_books()
 {
 	return Writer::get_number_of_books();
 }
-

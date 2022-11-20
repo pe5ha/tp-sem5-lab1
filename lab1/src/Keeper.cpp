@@ -28,7 +28,14 @@ keeper::keeper(const keeper& ref_k)
 	this->p = ref_k.p;
 	this->n = ref_k.n;
 	this->f = ref_k.f;
-	//TODO: сделать присваивание и для других классов
+}
+
+keeper::~keeper()
+{
+	delete[] p;
+	delete[] n;
+	delete[] f;
+	cout << "Вызван деструктор ~keeper" << endl;
 }
 
 int keeper::get_size()
@@ -88,7 +95,7 @@ void keeper::delete_novelist(int id)
 	size_n--;
 }
 
-void keeper::add_fantast(Fantasist new_f)
+void keeper::add_fantast(Fantasist& new_f)
 {
 	size_f++;
 	Fantasist* new_fantast = new Fantasist[size_f];
@@ -262,13 +269,20 @@ void keeper::print_poet(int id)
 	cout << "ФИО: " << p[id].get_fullname() << endl;
 	cout << "Годы жизни: " << p[id].get_years_of_birth() << " - " << p[id].get_years_of_death() << endl;
 	if (p[id].get_number_of_books() == 0) { cout << "Нету книг" << endl; }
-	else {
+	else if (!have_word(p[0].get_books()[0])) {
 		for (int i = 1; i <= p[id].get_number_of_books(); i++) {
 			cout << "Книга " << i << ": ";
 			cout << p[id].get_books()[i] << endl;
 		}
 	}
+	else {
+		for (int i = 0; i < p[id].get_number_of_books(); i++) {
+			cout << "Книга " << i + 1 << ": ";
+			cout << p[id].get_books()[i] << endl;
+		}
+	}
 }
+
 
 void keeper::print_novelist()
 {
@@ -383,3 +397,11 @@ string* keeper::split(string str, char ch)
 	return s;
 }
 
+bool keeper::have_word(string s)
+{
+	for (int i = 0; i < s.length(); i++) { // идем по символам
+		if (s[i] >= 'A' && s[i] <= 'Z' || s[i] >= 'a' && s[i] <= 'z')
+			return true;
+	}
+	return false;
+}

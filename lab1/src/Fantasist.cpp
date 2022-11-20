@@ -24,6 +24,13 @@ Fantasist::Fantasist(const Fantasist& ref_Fantast)
 	filmed = ref_Fantast.filmed;
 }
 
+Fantasist::~Fantasist()
+{
+	delete[] books;
+	cout << "Вызван деструктор ~Fantasist" << endl;
+}
+
+
 string Fantasist::get_fullname()
 {
 	return Writer::get_fullname();
@@ -78,4 +85,3 @@ bool Fantasist::is_filmed()
 {
 	return this->filmed;
 }
-

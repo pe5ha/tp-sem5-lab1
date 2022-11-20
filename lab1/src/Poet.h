@@ -9,6 +9,7 @@ public:
 	Poet();
 	Poet(string fullname, int year_of_birth, int year_of_death , string *books, int nob); //конструктор с параметрами
 	Poet(const Poet &ref_Poet); //конструктор копирования
+	~Poet();
 
 	//геттеры
 	string get_fullname() override;
@@ -29,4 +30,3 @@ public:
 	void add_book(string)override;
 	void delete_book()override;
 };
-

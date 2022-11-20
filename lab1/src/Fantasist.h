@@ -7,6 +7,7 @@ public:
 	Fantasist();
 	Fantasist(string fullname, string *books, int nob, bool filmed);// конструктор с парам-ми
 	Fantasist(const Fantasist &ref_Fantast); // конструктор копирования
+	~Fantasist();
 
 	//геттеры
 	string get_fullname() override;
@@ -25,4 +26,3 @@ public:
 	void add_book(string)override;
 	void delete_book()override;
 };
-

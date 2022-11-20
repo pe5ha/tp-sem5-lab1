@@ -27,6 +27,13 @@ Poet::Poet(const Poet& ref_Poet)
 	number_of_books = ref_Poet.number_of_books;
 }
 
+
+Poet::~Poet()
+{
+	delete[] books;
+	cout << "Вызван деструктор ~Poet" << endl;
+}
+
 string Poet::get_fullname()
 {
 	return Writer::get_fullname();
@@ -91,4 +98,3 @@ int Poet::get_number_of_books()
 {
 	return Writer::get_number_of_books();
 }
-

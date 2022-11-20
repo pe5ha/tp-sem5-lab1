@@ -292,9 +292,6 @@ namespace Menu {
 
 
 
-
-
-
 	void add_a_poet()
 	{
 		string fullname;
@@ -362,7 +359,7 @@ namespace Menu {
 	void add_a_fantast()
 	{
 		string fullname;
-		string* books = new string[1];
+		string* books = new string[20];
 		string filmed;
 		getline(cin, fullname);
 		getline(cin, books[0]);
@@ -440,8 +437,6 @@ namespace Menu {
 		cin >> id;
 		k.delete_book_fantast(id);
 	}
-
-
 
 
 

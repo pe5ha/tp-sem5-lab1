@@ -11,6 +11,7 @@ public:
 	Novelist();
 	Novelist(string fullname, int year_of_birth, int year_of_death , string *books, int nob, string biography); //конструктор с парам-ми
 	Novelist(const Novelist &ref_Novelist); //конструктор копирования
+	~Novelist();
 	
 	//геттеры
 	string get_fullname() override;
@@ -33,4 +34,3 @@ public:
 	void add_book(string)override;
 	void delete_book()override;
 };
-
